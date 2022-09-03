@@ -1,0 +1,26 @@
+{%extends 'rindex.html'%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {%block main%}
+    <br><br>
+    <h2 class="btn btn-danger shadow">complent here</h2>
+    <div class="container-sm shadow" style="width:400px">
+     <form action=" " method="post">
+        {%csrf_token%}
+        <label class="form-label">title/case</label>
+        <input type="text" class="form-control" name="title">
+        <label class="form-label">discriptions</label>
+        <textarea class="form-control" name="descr"></textarea>
+        <button type="submit" class="btn btn-success">save</button>
+     </form>
+    </div>
+    {%endblock%}
+</body>
+</html>

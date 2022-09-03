@@ -10,6 +10,9 @@ from django.contrib import messages
 from django.urls import reverse
 from .models import *
 from django.contrib import sessions
+from django.conf import settings
+from django.core.mail import send_mail
+
 # Create your views here.
 
 
@@ -23,6 +26,11 @@ def register(request):
               form.save()
               user=form.cleaned_data.get('username')
               messages.success(request,"registered successfully"+user)
+              subject = 'welcome to GFG world'
+              message = f'Hi {User.username}, thank you for registering in geeksforgeeks.'
+              email_from = settings.EMAIL_HOST_USER
+              recipient_list = [User.email, ]
+              send_mail( subject, message, email_from, recipient_list )
               return redirect('login')
     Context={
             'form':form
@@ -40,13 +48,15 @@ def login(request):
           if forma.is_valid():
                username = forma.cleaned_data['username']
                request.session['username'] = username
+              
+
                return redirect('home')
         
     Context={
           'forma':forma
     }
     return render(request,'login.html',Context)
-@login_required(login_url='login') 
+#@login_required(login_url='login') 
 def index(request):
     
    if request.session.has_key('username'):
@@ -55,9 +65,6 @@ def index(request):
       return render(request, 'index.html', {"username" : username,'image':image})
    else:
       return render(request, 'login.html', {})
-    #temp=loader.get_template('index.html')
-    
-   # return HttpResponse(temp.render())
 def logout(request):
    logout(request)
    try:

@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -39,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
      'main',
     'crispy_forms',
+    'registeral.apps.RegisteralConfig',
 ]
 
 MIDDLEWARE = [
@@ -56,7 +58,7 @@ ROOT_URLCONF = 'apparent.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR,'main/template'],
+        'DIRS': [BASE_DIR,'main/template','registeral/templete'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -78,17 +80,19 @@ WSGI_APPLICATION = 'apparent.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME':  'egalcho',
-        'USER':'root',
-        'PASSWORD':'',
-        
-        'HOST': '127.0.0.1',  
-        'PORT': '3306',  
-        'OPTIONS': {  
-            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'" 
-        } 
-        }  
+        'NAME': 'egalcho', 
+        'USER': 'root', 
+        'PASSWORD': '',
+        'HOST': '127.0.0.1', 
+        'PORT': '3306',
+    }
 }
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'egclearance@gmail.com'
+EMAIL_HOST_PASSWORD = 'E29032903g@'
 
 
 # Password validation
@@ -129,7 +133,7 @@ STATIC_URL = 'static/'
 CRISPY_TEMPLATE_PACK='bootstrap4'
 STATICFILES_DIRS = [
     BASE_DIR / "static",
-    '/var/www/static/',
+   
 ]
 
 # Default primary key field type
@@ -140,4 +144,121 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_REDIRECT_URL='/'
 MEDIA_ROOT=os.path.join(BASE_DIR,'picture')
 MEDIA_URL='picture/'
+
+
+#jazzman
+JAZZMIN_SETTINGS = {
+   
+    "site_title": "addmin pannel",
+
+   
+    "site_header": "protected area",
+
+   
+    "site_brand": "online clearance",
+
+    # Logo to use for your site, must be present in static files, used for brand on top left
+    "site_logo": "books/img/logo.png",
+
+   
+    "login_logo": None,
+
+   
+    "login_logo_dark": None,
+
+   
+    "site_logo_classes": "img-circle",
+
+    "site_icon": None,
+
+    
+    "welcome_sign": "welcome egalcho apparent project",
+
+   
+    "copyright": "egalcho",
+
+    
+    "search_model": "auth.User",
+
+   
+    "user_avatar": None,
+
+   
+    "topmenu_links": [
+
+       
+        {"name": "Home",  "url": "admin:index", "permissions": ["auth.view_user"]},
+
+        
+        {"name": "Support", "url": "https://github.com/farridav/django-jazzmin/issues", "new_window": True},
+
+       
+        {"model": "auth.User"},
+
+      
+        {"app": "books"},
+    ],
+
+   
+    "usermenu_links": [
+        {"name": "Support", "url": "https://github.com/farridav/django-jazzmin/issues", "new_window": True},
+        {"model": "auth.user"}
+    ],
+
+    
+    "show_sidebar": True,
+
+    
+    "navigation_expanded": True,
+
+    
+    "hide_apps": [],
+
+   
+    "hide_models": [],
+
+   
+    "order_with_respect_to": ["auth", "books", "books.author", "books.book"],
+
+   
+    "custom_links": {
+        "books": [{
+            "name": "Make Messages", 
+            "url": "make_messages", 
+            "icon": "fas fa-comments",
+            "permissions": ["books.view_book"]
+        }]
+    },
+
+   
+    "icons": {
+        "auth": "fas fa-users-cog",
+        "auth.user": "fas fa-user",
+        "auth.Group": "fas fa-users",
+    },
+   
+    "default_icon_parents": "fas fa-chevron-circle-right",
+    "default_icon_children": "fas fa-circle",
+
+   
+    "related_modal_active": False,
+
+   
+    "custom_css": None,
+    "custom_js": None,
+    
+    "show_ui_builder": False,
+
+   
+    "changeform_format": "horizontal_tabs",
+   
+    "changeform_format_overrides": {"auth.user": "collapsible", "auth.group": "vertical_tabs"},
+   
+    #"language_chooser": True,
+}
+JAZZMIN_UI_TWEAKS = {
+   
+    "theme": "flatly",
+    "dark_mode_theme": "darkly",
+}
 

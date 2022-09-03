@@ -17,7 +17,7 @@ class Reg(models.Model):
     phone=models.CharField(max_length=100)
     def __str__(self):
         return self.username
-class Sector(models.Model):
+class Departiment(models.Model):
     name=models.CharField(max_length=255)
     title=models.CharField(max_length=255)
     memberS=models.IntegerField()
@@ -26,13 +26,13 @@ class Sector(models.Model):
         return self.username
 
 class Complent(models.Model):
-    username=models.ForeignKey(User,on_delete=models.CASCADE)
+    username=models.ForeignKey(User,on_delete=models.CASCADE,null=True)
     
     title=models.CharField(max_length=255)
     image=models.ImageField(upload_to='picture',null=TRUE)
     uid=models.IntegerField(null=True)
     discription=models.TextField()
-    comfrom=models.ForeignKey(Sector,on_delete=models.CASCADE,default=1)
+    comfrom=models.ForeignKey(Departiment,on_delete=models.CASCADE,default=1)
     cfrom=models.CharField(max_length=255,null=TRUE)
     def __str__(self):
         return self.username

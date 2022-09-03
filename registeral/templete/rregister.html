@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+   {%extends 'rindex.html'%}
+</head>
+{% load crispy_forms_tags%}
+
+<body>
+    {%block main%}
+    <br><br>
+    <div class="container-sm shadow" style="width:400px">
+    <form action="" method="post">
+           {%csrf_token%}
+          {{form|crispy}}
+       <input type="submit" name="Create User" class="btn btn-primary" >
+    </form>
+    {{form.errors}}
+</div>
+{%endblock%}
+</body>
+</html>

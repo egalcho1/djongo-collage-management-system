@@ -19,5 +19,4 @@ urlpatterns = [
     path('home/users/complent/<int:id>/csave/',views.csave,name='csave'),
 ]
 if settings.DEBUG:
-        urlpatterns += static(settings.MEDIA_URL,
-                              document_root=settings.MEDIA_ROOT)
+        urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
