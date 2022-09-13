@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {%extends 'index.html'%}
+    {% load static %}
+   
+  {% load crispy_forms_tags%}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   {%block title%} <title>Document</title>{%endblock%}
+   {%load static%}
+   <link rel="stylesheet" href="{%static 'main/css/bootstrap.css'%}">
+</head>
+
+
+{%block main%}
+<!--Main layout-->
+<main style="margin-top: 58px;">
+  <div class="container-sm" style="width:400px ; outline:2px solid cyan"><center>
+    <table class="table table-hover">
+  {% for st in st %}
+  <tr>
+    <th>frist name</th>
+    <th>last name</th>
+  </tr>
+<tr>
+<td><p> {{st.fname}}</p></td>
+<td><p>  {{st.lname}}</p></td>
+</tr>
+<tr><td><p>this clearance is given to student name mentioned above and he fineshed his calender and he has no complent and our organizetion wishs to him good gurny</p></td></tr>
+<tr>
+  <td>please scan this for more imformation</td>
+</tr>
+<tr>
+<td><img src="{% static 'main/qr/qr.png' %}" alt="My image"></td>
+</tr>
+<tr> <button onclick="window.print()" class="btn btn-info">print</button></tr>
+  {%endfor%}</table></center></div>
+</main>{%endblock%}
+<!--Main layout-->
+
+</body>
+</html>

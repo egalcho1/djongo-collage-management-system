@@ -54,7 +54,7 @@ def login(request):
     Context={
           'forma':forma
     }
-    return render(request,'login.html',Context)
+    return render(request,'rlogin.html',Context)
 
 #@login_required(login_url='login') 
 def index(request):

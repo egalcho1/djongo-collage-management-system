@@ -92,7 +92,7 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'egclearance@gmail.com'
-EMAIL_HOST_PASSWORD = 'E29032903g@'
+EMAIL_HOST_PASSWORD = 'vhplovwtzxxhutvr'
 
 
 # Password validation
@@ -132,7 +132,7 @@ USE_TZ = True
 STATIC_URL = 'static/'
 CRISPY_TEMPLATE_PACK='bootstrap4'
 STATICFILES_DIRS = [
-    BASE_DIR / "static",
+    BASE_DIR / "main/static",
    
 ]
 
@@ -142,11 +142,28 @@ STATICFILES_DIRS = [
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 #DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_REDIRECT_URL='/'
-MEDIA_ROOT=os.path.join(BASE_DIR,'picture')
-MEDIA_URL='picture/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
 
+
+#password hasher
+PASSWORD_HASHERS = [
+  'django.contrib.auth.hashers.PBKDF2PasswordHasher',
+  'django.contrib.auth.hashers.PBKDF2SHA1PasswordHasher',
+  'django.contrib.auth.hashers.Argon2PasswordHasher',
+  'django.contrib.auth.hashers.BCryptSHA256PasswordHasher',
+  'django.contrib.auth.hashers.BCryptPasswordHasher',
+  'django.contrib.auth.hashers.SHA1PasswordHasher',
+  'django.contrib.auth.hashers.MD5PasswordHasher',
+  'django.contrib.auth.hashers.UnsaltedSHA1PasswordHasher',
+  'django.contrib.auth.hashers.UnsaltedMD5PasswordHasher',
+  'django.contrib.auth.hashers.CryptPasswordHasher',
+]
 
 #jazzman
+
+
+
 JAZZMIN_SETTINGS = {
    
     "site_title": "addmin pannel",

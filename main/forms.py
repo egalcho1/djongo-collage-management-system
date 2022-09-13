@@ -14,5 +14,8 @@ class Complentform(forms.ModelForm):
         class Metta:
                 model=Complent
                 fields='__all__'
-       
+class Registration(forms.ModelForm):
+        class Metta:
+                model=Student
+                fields=['fname','lname','sid','phone','password','email']
                           

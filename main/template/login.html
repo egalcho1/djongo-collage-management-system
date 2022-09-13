@@ -13,14 +13,14 @@
     <div class="container-sm shadow" style="width:400px">
     <form action="" method="post">
           {%csrf_token%}
-       <label class="form-label"> {{forma.username.label}}</label>
-       <span class="form-control">{{forma.username}}</span>
-       <label class="form-label"> {{forma.password.label}}</label>
-       <span class="form-control">{{forma.password}}</span>
-       {{form.errors}}
+          <label class="form-label">student id number</label>
+          <input type="text" name="sid" class="form-control">
+         
+          <label class="form-label">new password</label>
+          <input type="password" name="pass1" class="form-control">
         <input type="submit" value="login" class="btn btn-success">
     </form>
-
+      <a href="psforgot/">forgot password</a>
 {% for masage in messages%}
     masage
 {%endfor%}

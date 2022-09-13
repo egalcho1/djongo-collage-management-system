@@ -9,14 +9,13 @@ urlpatterns = [
     path('register/',views.register,name='register'),
     path('',views.login,name='login'),
     #path('logout/',views.logout, name='logout'),
-    path('home/profile/',views.profile,name='profile'),
-    #path('user/<int:id>',views.user,name='user'),
-    path('success/',views.success,name='success'),
+   
     path('disprofile/',views.disprofile,name='disprofile'),
-    path('home/profile/uprofile/',views.uprofile,name='uprofile'),
     path('home/users/',views.users,name='users'),
-    path('home/users/complent/<int:id>/',views.complent,name='complent'),
-    path('home/users/complent/<int:id>/csave/',views.csave,name='csave'),
+    path('home/proimage/',views.proimage,name='proimage'),
+    path('home/clear/',views.clear,name='clear'),
+    path('psforgot/',views.psforgot,name='psforgot'),
+    path('npass/',views.npass,name='npass'),
 ]
 if settings.DEBUG:
         urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
