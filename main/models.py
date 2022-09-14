@@ -20,11 +20,12 @@ class Reg(models.Model):
         return self.username
 class Departiment(models.Model):
     name=models.CharField(max_length=255)
-    title=models.CharField(max_length=255)
-    memberS=models.IntegerField()
-    admin =models.ForeignKey(User, on_delete=models.CASCADE)
+    colage=models.CharField(max_length=255)
+    members=models.IntegerField(null=True)
+    descr=models.CharField(max_length=255,null=True)
+    admin =models.ForeignKey(User, on_delete=models.CASCADE,default=1)
     def __str__(self):
-        return self.username
+        return self.name
 
 class Complent(models.Model):
     username=models.ForeignKey(User,on_delete=models.CASCADE,null=True)
@@ -69,5 +70,6 @@ class Student(models.Model):
     password=models.CharField(max_length=255,default="1234")
     email=models.EmailField(max_length=255,null=True)
     image=models.ImageField(null=True)
+    radmin=models.ForeignKey(User,on_delete=models.CASCADE,null=True)
     
     

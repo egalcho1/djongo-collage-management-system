@@ -1,25 +1,99 @@
+{%extends 'rindex.html'%}
+{% load crispy_forms_tags%}
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-   {%extends 'rindex.html'%}
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
 </head>
-{% load crispy_forms_tags%}
 
 <body>
-    {%block main%}
-    <br><br>
-    <div class="container-sm shadow" style="width:400px">
-    <form action="" method="post">
-           {%csrf_token%}
-          {{form|crispy}}
-       <input type="submit" name="Create User" class="btn btn-primary" >
-    </form>
-    {{form.errors}}
+  {%block main%}
+<!--Main layout-->
+<main style="margin-top: 58px;">
+    <button type="button" class="btn bg-green" style="float:right ;background-color:lightgreen
+    "
+        data-toggle="modal" data-target="#exampleModal">
+       
+    
+        <span class="bi-plus" style="font-size:30px ;">new lecturer</span>
+      </button>
+    
+  <table border="1" class="table table-hover shadow">
+    <tr>
+        <th>id</th>
+        <th>username</th>
+        
+        <th>email</th>
+        <th>delete</th>
+        <th>update</th>
+        
+
+    </tr>
+    {% for x in lectur %}
+    <tr>
+    <td>{{ x.id }}</td>
+    <td>{{ x.username }}</td>
+    <td>{{ x.email }}</td>
+    
+    <td><a href="delete/{{ x.id }}">delete</a></td>
+    <td><a href="update/{{ x.id }}">update</a></td>
+    <td><a href="complent/{{ x.id }}">complent</a></td>
+    </tr>
+    {% endfor %}
+    </table>
+       
+    </table>
+
+</main>
+<div class="container mt-3" style="width: 700px;">
+   
+    
+   
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5>add new lecturer</h5>
+                    <button type="button" class="close"
+                        data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">
+                            ×
+                        </span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                  
+                    <a href="#" data-toggle="tooltip"
+                        title="" data-placement="right">
+                        <form action="" method="post">
+                            {%csrf_token%}
+                           {{form|crispy}}
+                        <input type="submit" name="Create User" class="btn btn-primary" >
+                     </form>
+                     {{form.errors}}
+                    </a>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary"
+                        data-dismiss="modal">
+                        Close
+                    </button>
+                   
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
 {%endblock%}
+
+
 </body>
 </html>

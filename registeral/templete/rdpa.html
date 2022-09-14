@@ -20,14 +20,26 @@
       </button>
     
   <table border="1" class="table table-hover shadow">
+    <tr>
+        <th>id</th>
+        <th>name</th>
+        <th>collage</th>
+        <th>description</th>
+        <th>delete</th>
+        <th>update</th>
+        
+
+    </tr>
     {% for x in depart %}
+    
     <tr>
     <td>{{ x.id }}</td>
-    <td>{{ x.username }}</td>
-    <td>{{ x.email }}</td>
-    <td><a href="delete/{{ x.id }}">delete</a></td>
+    <td>{{ x.name }}</td>
+    <td>{{ x.colage }}</td>
+    <td>{{ x.descr }}</td>
+    <td><a href="rdelete/{{ x.id }}">delete</a></td>
     <td><a href="update/{{ x.id }}">update</a></td>
-    <td><a href="complent/{{ x.id }}">complent</a></td>
+    
     </tr>
     {% endfor %}
     </table>
@@ -58,10 +70,10 @@
                         title="" data-placement="right">
                         <form action="" method="post">
                             {%csrf_token%}
-                            <label class="form-label">title</label>
-                            <input type="text" class="form-control" name="title">
+                            <label class="form-label">name</label>
+                            <input type="text" class="form-control" name="name">
                             <label class="form-label">collage</label>
-                            <input type="text" class="form-control" name="title">
+                            <input type="text" class="form-control" name="colage">
                             <label class="form-label">discription</label>
                             <textarea class="form-control" name="descr"></textarea>
                             <button type="submit" class="btn btn-success">save</button>
@@ -73,9 +85,7 @@
                         data-dismiss="modal">
                         Close
                     </button>
-                    <button type="button" class="btn btn-primary">
-                        Save changes
-                    </button>
+                   
                 </div>
             </div>
         </div>
