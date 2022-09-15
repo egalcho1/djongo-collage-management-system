@@ -1,3 +1,4 @@
+from asyncio.windows_events import NULL
 import email
 from email.policy import default
 from pickle import TRUE
@@ -5,7 +6,7 @@ from tkinter import CASCADE, Widget
 from turtle import title
 from django.db import models
 from django.contrib.auth.models import User
-
+import time
 class Reg(models.Model):
     username=models.CharField(max_length=100)
     gender=models.CharField(max_length=100)
@@ -23,7 +24,7 @@ class Departiment(models.Model):
     colage=models.CharField(max_length=255)
     members=models.IntegerField(null=True)
     descr=models.CharField(max_length=255,null=True)
-    admin =models.ForeignKey(User, on_delete=models.CASCADE,default=1)
+    admin =models.ForeignKey(User, on_delete=models.DO_NOTHING,default=1)
     def __str__(self):
         return self.name
 
@@ -71,5 +72,26 @@ class Student(models.Model):
     email=models.EmailField(max_length=255,null=True)
     image=models.ImageField(null=True)
     radmin=models.ForeignKey(User,on_delete=models.CASCADE,null=True)
-    
+    depa=models.ForeignKey(Departiment,  on_delete=models.DO_NOTHING,null=True)
+    dorm=models.CharField(max_length=255,null=True)
+    block=models.CharField(max_length=255,null=True)
+class Lectur(models.Model):
+    username=models.CharField(max_length=255,unique=True) 
+    email=models.EmailField(unique=True,max_length=255) 
+    phone=models.IntegerField()
+    depa=models.CharField(max_length=255,null=True)
+    fild=models.CharField(max_length=255,null=True)
+    exp=models.CharField(max_length=255,null=True)
+    age=models.DateField(null=True)
+    dat=models.DateTimeField(auto_now_add=True)
+    salary=models.IntegerField(null=True)
+    password=models.CharField(max_length=100,null=True)
+    gender=models.CharField(max_length=255,null=True)
+class Course(models.Model):
+    name=models.CharField(max_length=255,null=True)
+    ccode=models.CharField(max_length=255,unique=True)
+    adby=models.ForeignKey(User,on_delete=models.DO_NOTHING)
+    depart=models.ForeignKey(Departiment,on_delete=models.CASCADE,default=1)
+    crdt=models.IntegerField()
+    ects=models.IntegerField()
     

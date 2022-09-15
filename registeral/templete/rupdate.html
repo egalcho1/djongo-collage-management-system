@@ -18,7 +18,7 @@
         data-toggle="modal" data-target="#exampleModal">
        
     
-        <span class="bi-plus" style="font-size:30px ;">new student</span>
+        <span class="bi-plus" style="font-size:30px ;">update</span>
       </button>
     
   <table border="1" class="table table-hover shadow">
@@ -28,21 +28,18 @@
         <th>lname</th>
         <th>student id</th>
         <th>email</th>
-        <th>delete</th>
-        <th>update</th>
+        
         
 
     </tr>
-    {% for x in student %}
+    {% for x in member %}
     <tr>
     <td>{{ x.id }}</td>
     <td>{{ x.fname }}</td>
     <td>{{ x.lname }}</td>
     <td>{{ x.sid }}</td>
     <td>{{ x.email }}</td>
-    <td><a href="delete/{{ x.id }}">delete</a></td>
-    <td><a href="update/{{ x.id }}">update</a></td>
-    <td><a href="complent/{{ x.id }}">complent</a></td>
+    
     </tr>
     {% endfor %}
     </table>
@@ -99,6 +96,8 @@
     </div>
 </div>
 
+{%endblock%}
+{%block sidebar%}
 {%endblock%}
 
 

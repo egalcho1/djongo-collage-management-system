@@ -39,6 +39,7 @@
     <td>{{ x.descr }}</td>
     <td><a href="rdelete/{{ x.id }}">delete</a></td>
     <td><a href="update/{{ x.id }}">update</a></td>
+    <td><a href="course/{{ x.id }}">add course</a></td>
     
     </tr>
     {% endfor %}
@@ -92,6 +93,19 @@
     </div>
 </div>
 
+{%endblock%}
+{%block sidebar%}
+<nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white">
+    <div class="position-sticky">
+      <div class="list-group list-group-flush mx-3 mt-4">
+        <a
+          href="#"
+          class="list-group-item list-group-item-action py-2 ripple"
+          aria-current="true"
+        >
+<a href="course/" class="list-group-item list-group-item-action py-2 ripple"
+><i class="fas fa-chart-line fa-fw me-3"></i><span>courses</span></a
+></a></div></div></nav>
 {%endblock%}
 
 

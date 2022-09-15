@@ -102,19 +102,14 @@ def update(request, id):
         return redirect('..')
         
     mymember = Student.objects.get(id=id)
+    member=Student.objects.all()
     template = loader.get_template('rupdate.html')
     context = {
     'mymember': mymember,
+    'member':member
   }
     return HttpResponse(template.render(context, request))
-def updaterecord(request, id):
-  first = request.POST['first']
-  last = request.FILES['last']
-  member = User.objects.get(id=id)
-  member.firstname = first
-  member.lastname = last
-  member.save()
-  return HttpResponseRedirect(reverse('index'))
+
 def complent(request,id):
     if request.method=='POST':
        first = request.POST['title']
@@ -136,8 +131,10 @@ def complent(request,id):
     else:
         mymember = User.objects.get(id=id)
         template = loader.get_template('rcomplent.html')
+        member=Student.objects.all()
         context = {
               'mymember': mymember,
+               'member': member,
                }
         return HttpResponse(template.render(context, request))
     
@@ -161,3 +158,38 @@ def rdelete(request,id):
     member=Departiment.objects.get(id=id)
     member.delete()
     return HttpResponseRedirect(reverse('index'))
+def lectur(request):
+    if request.method=='POST':
+       username=request.POST['uname']
+       email=request.POST['email']
+       password=request.POST['password']
+       phone=request.POST['phone']
+       exp=request.POST['exp']
+       salary=request.POST['salary']
+       gender=request.POST['gender']
+       age=request.POST['age']
+       depa=request.POST['depa']
+       fild=request.POST['fild']
+       #descr=request.POST['descr']
+      # admin=request.session['username']
+       lectur=Lectur(username=username,email=email,password=password,phone=phone,exp=exp,salary=salary,gender=gender,age=age,depa=depa,fild=fild)
+       lectur.save()
+       return redirect('../')
+    else:
+        student=Lectur.objects.all()
+        return render(request,'lectur.html',{'student':student})
+def course(request,id):
+        if request.method=='POST':
+            name=request.POST['name']
+            ccode=request.POST['ccode']
+            crdt=request.POST['crdt']
+            ect=request.POST['ect']
+            adby=User.objects.get(username=request.session['username'])
+            dapart=Departiment.objects.get(id=id)
+            course=Course(name=name,ccode=ccode,crdt=crdt,ects=ect,adby=adby,depart=dapart)
+            course.save()
+            return redirect('..')
+            
+        else:
+            student=Course.objects.all()
+            return render(request,'course.html',{'student':student})

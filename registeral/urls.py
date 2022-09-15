@@ -17,6 +17,8 @@ urlpatterns = [
  #path('hom/student/complent/complents/<int:id>/',views.complents,name='complents'),
  path('hom/departiment/',views.departiment,name='departiment'),
  path('hom/departiment/rdelete/<int:id>',views.rdelete,name='rdelete'),
+ path('hom/lectur/',views.lectur,name='lectur'),
+ path('hom/departiment/course/<int:id>/',views.course,name='course'),
 ]
 if settings.DEBUG:
         urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

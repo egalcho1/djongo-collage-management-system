@@ -17,7 +17,7 @@
         data-toggle="modal" data-target="#exampleModal">
        
     
-        <span class="bi-plus" style="font-size:30px ;">new student</span>
+        <span class="bi-plus" style="font-size:30px ;">new lecturer</span>
       </button>
     
   <table border="1" class="table table-hover shadow" style="margin-right: 20px;">
@@ -35,10 +35,10 @@
     {% for x in student %}
     <tr>
     <td>{{ x.id }}</td>
-    <td>{{ x.fname }}</td>
-    <td>{{ x.lname }}</td>
-    <td>{{ x.sid }}</td>
+    <td>{{ x.username }}</td>
     <td>{{ x.email }}</td>
+    <td>{{ x.salary }}</td>
+    <td>{{ x.exp }}</td>
     <td><a href="delete/{{ x.id }}">delete</a></td>
     <td><a href="update/{{ x.id }}">update</a></td>
     <td><a href="complent/{{ x.id }}">complent</a></td>
@@ -72,14 +72,30 @@
                         title="" data-placement="right">
                         <form action="" method="post">
                             {%csrf_token%}
-                            <label class="form-label">frist name</label>
-                            <input type="text" class="form-control" name="fname">
-                            <label class="form-label">last name</label>
-                            <input type="text" class="form-control" name="lname">
-                            <label class="form-label">student id</label>
-                            <input type="text" class="form-control" name="sid">
+                            <label class="form-label">username</label>
+                            <input type="text" class="form-control" name="uname">
                             <label class="form-label">email</label>
                             <input type="email" class="form-control" name="email">
+                            <label class="form-label">departiment</label>
+                            <input type="text" class="form-control" name="depa">
+                            <label class="form-label">phone</label>
+                            <input type="tel" class="form-control" name="phone">
+                            <label class="form-label">fields/course</label>
+                            <input type="text" class="form-control" name="fild">
+                            <label class="form-label">expiriance</label>
+                            <input type="exp" class="form-control" name="exp">
+                            <label class="form-label">salary</label>
+                            <input type="text" class="form-control" name="salary">
+                            <label class="form-label">age</label>
+                            <input type="date" class="form-control" name="age">
+                            <label class="form-label">gender</label>
+                            
+                                <select class="form-control" name="gender" >
+                                <option value="male">male</option>
+
+                                <option value="female">female</option>
+                                <option value="costom">costom</option>
+                            </select>
                             <label class="form-label">password</label>
                             <input type="password" class="form-control" name="password">
 
