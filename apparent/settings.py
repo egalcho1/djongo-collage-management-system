@@ -41,6 +41,7 @@ INSTALLED_APPS = [
      'main',
     'crispy_forms',
     'registeral.apps.RegisteralConfig',
+    
 ]
 
 MIDDLEWARE = [
@@ -58,7 +59,7 @@ ROOT_URLCONF = 'apparent.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR,'main/template','registeral/templete'],
+        'DIRS': [BASE_DIR,'main/template','registeral/templete','lectur/templete'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -80,7 +81,7 @@ WSGI_APPLICATION = 'apparent.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'egalcho', 
+        'NAME': 'apparent', 
         'USER': 'root', 
         'PASSWORD': '',
         'HOST': '127.0.0.1', 
@@ -91,8 +92,8 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'egclearance@gmail.com'
-EMAIL_HOST_PASSWORD = 'vhplovwtzxxhutvr'
+EMAIL_HOST_USER = 'egalcho1@gmail.com'
+EMAIL_HOST_PASSWORD = 'jbaunkdrhedsrknx'
 
 
 # Password validation

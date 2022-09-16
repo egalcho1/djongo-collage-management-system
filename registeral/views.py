@@ -1,20 +1,6 @@
-from django.shortcuts import render,redirect
-from django.contrib.auth import authenticate, login
-from django.contrib.auth.decorators import login_required
-from django.contrib.auth.models import User
-from django.http import HttpResponse,HttpResponseRedirect
-from django.contrib.auth.forms import AuthenticationForm
-from .forms import *
-from django.template import Context,loader
-from django.contrib import messages
-from django.urls import reverse
-from .models import *
-from main.models import *
-from django.contrib import sessions
-from django.conf import settings
-from django.core.mail import send_mail
-
-
+from . rimp import *
+from main.imp import *
+#from . import view
 
 
 def index(request):
@@ -32,11 +18,13 @@ def register(request):
         if form.is_valid():
               form.save()
               user=form.cleaned_data.get('username')
+              password=form.cleaned_data.get('password')
+              email=form.cleaned_data.get('email')
               messages.success(request,"registered successfully"+user)
-              subject = 'welcome to GFG world'
-              message = f'Hi {User.username}, thank you for registering in geeksforgeeks.'
+              subject = 'this is to inform you that you are registered as registeral in jku'
+              message = f'Hi {user},your username={user}..your password={password} ..thank jku.'
               email_from = settings.EMAIL_HOST_USER
-              recipient_list = [User.email, ]
+              recipient_list = [email, ]
               send_mail( subject, message, email_from, recipient_list )
               return redirect('login')
     users=User.objects.filter(is_superuser=0)
@@ -76,12 +64,12 @@ def student(request):
         user=User.objects.get(username=admin)
         rd=Student.objects.create(fname=fname,lname=lname,sid=sid,radmin=user,email=email,password=pas)
         rd.save()
-        subject = 'this is to inform you username and password'
+        subject = 'this is to inform you username and password from hawaasa univeristy'
         message = f'Hi {fname}, your id={sid},your password={pas}.'
         email_from = settings.EMAIL_HOST_USER
         recipient_list = [email, ]
         send_mail( subject, message, email_from, recipient_list )
-        return redirect('hom/')
+        return redirect('..')
     student=Student.objects.all()
     return render(request,'rbase.html',{'student':student})
 def delete(request,id):
@@ -120,20 +108,20 @@ def complent(request,id):
        name=Student.objects.get(id=id)
        #email=Student.objects.filter(id=id)
        member=Complent.objects.create(title=first,discription=last,uid=id,username=user)
-       subject = 'this is to inform you username and password'
-       message = f'Hi {name}, complent on={first},massage={last}.'
+       subject = 'this is to inform you that there is compliment on you from jku'
+       message = f'Hi {name.fname}, complent_on={first},massage={last} from={admin}.'
        email_from = settings.EMAIL_HOST_USER
        recipient_list = [name.email, ]
        send_mail( subject, message, email_from, recipient_list )
        member.save()
-       return HttpResponseRedirect(reverse('..'))
+       return redirect('complent/')
        # return HttpResponseRedirect(reverse('hom'))
     else:
-        mymember = User.objects.get(id=id)
+       # mymember = User.objects.get(id=id)
         template = loader.get_template('rcomplent.html')
         member=Student.objects.all()
         context = {
-              'mymember': mymember,
+              #'mymember': mymember,
                'member': member,
                }
         return HttpResponse(template.render(context, request))
@@ -167,13 +155,20 @@ def lectur(request):
        exp=request.POST['exp']
        salary=request.POST['salary']
        gender=request.POST['gender']
+       rol=request.POST['rol']
        age=request.POST['age']
        depa=request.POST['depa']
        fild=request.POST['fild']
        #descr=request.POST['descr']
       # admin=request.session['username']
-       lectur=Lectur(username=username,email=email,password=password,phone=phone,exp=exp,salary=salary,gender=gender,age=age,depa=depa,fild=fild)
+       lectur=Lectur(username=username,rol=rol,email=email,password=password,phone=phone,exp=exp,salary=salary,gender=gender,age=age,depa=depa,fild=fild)
        lectur.save()
+       subject = 'your registered to jku as lecturer'
+       message = f'Hi {username}, your username is{username},password {password} thank you for using.'
+       email_from = settings.EMAIL_HOST_USER
+       recipient_list = [email, ]
+       send_mail( subject, message, email_from, recipient_list )
+
        return redirect('../')
     else:
         student=Lectur.objects.all()
@@ -188,8 +183,50 @@ def course(request,id):
             dapart=Departiment.objects.get(id=id)
             course=Course(name=name,ccode=ccode,crdt=crdt,ects=ect,adby=adby,depart=dapart)
             course.save()
-            return redirect('..')
+            return redirect('/hom/')
             
         else:
             student=Course.objects.all()
             return render(request,'course.html',{'student':student})
+def maker(request):
+    ran= random.randint(1, 10)
+    img = qrcode.make(ran)
+    type(img) 
+    im= img.save("main/static/main/qr/rqr.png")
+    return render(request,'qr.html',{'im':im})
+def calender(request):
+    if request.method=='POST':
+        name=request.POST['name']
+        descr=request.POST['descr']
+        date=request.POST['dt']
+        event=request.POST['event']
+        edescr=request.POST['edescr']
+        adb=request.session['username']
+        adby=User.objects.get(username=adb)
+        cale=Calender.objects.create(name=name,descr=descr,dat=date,event=event,eventd=edescr,adby=adby)
+        cale.save()
+        return redirect('..')
+        
+       
+    else:
+        cale=Calender.objects.all()
+        return render(request,'calendar.html',{'cale':cale})
+def cdelete(request,id):
+     cd=Calender.objects.get(id=id)
+     cd.delete()
+     return redirect('..')
+def cupdate(request,id):
+    pass
+def mark(request):
+    
+    if request.method=='POST':
+       mark1=request.POST['mark1']
+       mark2=request.POST['mark2']
+       mark3=request.POST['mark3']
+       adb=request.session['username']
+       user=User.objects.get(username=adb)
+      
+       return redirect('..')
+    form =Mark()
+    return render(request,'mark.html',{'form':form})
+            

@@ -19,6 +19,11 @@ urlpatterns = [
  path('hom/departiment/rdelete/<int:id>',views.rdelete,name='rdelete'),
  path('hom/lectur/',views.lectur,name='lectur'),
  path('hom/departiment/course/<int:id>/',views.course,name='course'),
+ path('hom/maker/',views.maker,name='maker'),
+ path('hom/calendar/',views.calender,name='calendar'),
+ path('hom/calendar/cdelete/<int:id>/',views.cdelete,name='cdelete'),
+ path('hom/calendar/cupdate/<int:id>',views.cupdate,name='cupdate'),
+ path('hom/mark/',views.mark,name='mark'),
 ]
 if settings.DEBUG:
         urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

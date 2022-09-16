@@ -1,0 +1,110 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+{%extends 'rindex.html'%}
+<body>
+  {%block main%}
+<!--Main layout-->
+<main style="margin-top: 58px;">
+    <button type="button" class="btn bg-green" style="float:right ;background-color:lightgreen
+    "
+        data-toggle="modal" data-target="#exampleModal">
+       
+    
+        <span class="bi-plus" style="font-size:30px ;">new event</span>
+      </button>
+    
+  <table border="1" class="table table-hover shadow" style="margin-right: 20px;">
+    <tr>
+        <th>id</th>
+        <th>calander title</th>
+        <th>description</th>
+        <th>event</th>
+        <th>event description</th>
+        <th>delete</th>
+        <th>update</th>
+        
+
+    </tr>
+    {% for x in cale %}
+    <tr>
+    <td>{{ x.id }}</td>
+    <td>{{ x.name }}</td>
+    <td>{{ x.descr }}</td>
+    <td>{{ x.event}}</td>
+    <td>{{ x.eventd }}</td>
+    <td><a href="cdelete/{{ x.id }}">delete</a></td>
+    <td><a href="cupdate/{{ x.id }}">update</a></td>
+    
+    </tr>
+    {% endfor %}
+    </table>
+       
+    </table>
+
+</main>
+<div class="container mt-3" style="width: 700px;">
+   
+    
+   
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5>add new events</h5>
+                    <button type="button" class="close"
+                        data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">
+                            ×
+                        </span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                  
+                    <a href="#" data-toggle="tooltip"
+                        title="" data-placement="right">
+                        <form action="" method="post">
+                            {%csrf_token%}
+                            <label class="form-label">title</label>
+                            <input type="text" class="form-control" name="name">
+                            <label class="form-label">description</label>
+                            <input type="text" class="form-control" name="descr">
+                            <label class="form-label">date</label>
+                            <input type="date" class="form-control" name="dt" placeholder="date">
+                            
+                            <label class="form-label">event</label>
+                            <input type="text" class="form-control" name="event" placeholder="optional">
+                            <label class="form-label">event description</label>
+                            <input type="text" class="form-control" name="edescr" placeholder="optional">
+                            
+
+                            <button type="submit" class="btn btn-success">save</button>
+                        </form>
+                    </a>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary"
+                        data-dismiss="modal">
+                        Close
+                    </button>
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{%endblock%}
+{%block sidebar%}
+{%endblock%}
+
+
+</body>
+</html>
