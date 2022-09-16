@@ -1,0 +1,28 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {%extends 'index.html'%}
+</head>
+<body>
+    {%block main%}
+    {% for m in image %}
+    <table class="table table-hover shadow" style="width:400px;margin-left:200px">
+
+    <div class="row">
+   <div class="col-11">
+        <tr>
+    <td>{{m.id}}</td>
+    <td>{{m.name}}</td>
+    <td><img src="{{m.picture.url}}"></td>
+    <td><a href="update/{{m.id}}">update</a></td>
+</tr></div></div>
+</table>
+    {%endfor%}
+    {%endblock%}
+</body>
+</html>
