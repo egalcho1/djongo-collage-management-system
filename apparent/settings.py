@@ -39,6 +39,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
      'main',
+     'lectur',
+     'human',
+     'reg',
+     'service',
+     'library',
     'crispy_forms',
     'registeral.apps.RegisteralConfig',
     
@@ -59,7 +64,7 @@ ROOT_URLCONF = 'apparent.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR,'main/template','registeral/templete','lectur/templete'],
+        'DIRS': [BASE_DIR,'main/template','registeral/templete','lectur/templete','human/template','reg/template','service/template','library/template'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -81,7 +86,7 @@ WSGI_APPLICATION = 'apparent.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'apparent', 
+        'NAME': 'egalcho', 
         'USER': 'root', 
         'PASSWORD': '',
         'HOST': '127.0.0.1', 
@@ -141,11 +146,12 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-#DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
 LOGIN_REDIRECT_URL='/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 MEDIA_URL = '/media/'
 
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 #password hasher
 PASSWORD_HASHERS = [
@@ -176,7 +182,7 @@ JAZZMIN_SETTINGS = {
     "site_brand": "online clearance",
 
     # Logo to use for your site, must be present in static files, used for brand on top left
-    "site_logo": "books/img/logo.png",
+    "site_logo": "",
 
    
     "login_logo": None,
@@ -186,6 +192,7 @@ JAZZMIN_SETTINGS = {
 
    
     "site_logo_classes": "img-circle",
+    "site_logo_width":"100",
 
     "site_icon": None,
 

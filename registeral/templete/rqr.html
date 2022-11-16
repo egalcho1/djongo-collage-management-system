@@ -1,44 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    {%extends 'index.html'%}
-    {% load static %}
+    
    
-  {% load crispy_forms_tags%}
+   
+ 
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   {%block title%} <title>Document</title>{%endblock%}
+    <title>Document</title>
    {%load static%}
    <link rel="stylesheet" href="{%static 'main/css/bootstrap.css'%}">
 </head>
 
 
-{%block main%}
+
 <!--Main layout-->
-<main style="margin-top: 58px;">
-  <div class="container-sm" style="width:400px ; outline:2px solid cyan"><center>
-    <table class="table table-hover">
-  {% for st in st %}
-  <tr>
-    <th>frist name</th>
-    <th>last name</th>
-  </tr>
-<tr>
-<td><p> {{st.fname}}</p></td>
-<td><p>  {{st.lname}}</p></td>
-</tr>
-<tr><td><p>this clearance is given to student name mentioned above and he fineshed his calender and he has no complent and our organizetion wishs to him good gurny</p></td></tr>
-<tr>
-  <td>please scan this for more imformation</td>
-</tr>
-<tr>
-<td><img src="{% static 'main/main/qr/rqr.png' %}" alt="My image"></td>
-</tr>
-<tr> <button onclick="window.print()" class="btn btn-info">print</button></tr>
-  {%endfor%}</table></center></div>
-</main>{%endblock%}
-<!--Main layout-->
+
+  
+
+  
+	<body>
+    <button onclick="window.print()" class="btn btn-primary" style="float: right;">print</button>
+    {%for n in st%}
+		<div class="container-sm shadow" style="width: 500px;" >
+
+			<div class="btn btn-success">
+	
+				<b>
+											<img src="https://jku.estudent.info/assets/jku-64fb13f4e820cd75185c2e70db49938fcbc48e470e987de81447ada18598eca7.png" style="border-radius:50%;margin-left:0px;width:50px;height:50px">
+				ጅንካ ዩኒቨርስቲ <br />
+					jinka university <br />
+					regular student's id card/የመደበኛ ተማሪ መታወቂያ ካርድ
+				</b><br />
+			</div>
+			<div class="row">
+				
+			<div class="col-sm-6">
+				
+			
+			
+	
+		<b>name:</b>{{n.fname}}&nbsp;&nbsp;&nbsp;{{n.lname}}
+		
+	<br>
+	
+		<br /><b>ID Number:</b>{{n.sid}}
+	<br />
+	
+		<b>Gender:</b>male
+	<br />
+	
+		<b>Entry Year:</b>2019/20 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	
+	<br />
+	
+		<b>Program :</b>{{n.depa}}  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+	
+
+</div><div class="col-sm-6"><img src="{{n.image.url}}" style="width: 100px;" alt="{{n.sid}}"/><br><img src="{%static 'id/'%}{{n.sid}}.png" style="width:120px;height:70px"></div></div></div><br />
+<div class="container-sm shadow" style="width: 500px;">
+	<div class="container-sm shadow bg-success ">
+		<b>Jinka University Registeral and Alumni Directorate </b>
+	</div>
+	<div class="row">
+		<div class="col-sm-6">
+			<b>P.B.Box:</b>165 <br />
+			<b>Tel.No:</b>251918661339 <br />
+			<img src="b.png" alt="" />
+		</div>
+		<div class="col-sm-6">
+			<b>website:</b>jku.edu.et <br />
+			<b>email:</b>directorate@jku.edu.et <br />
+			<b>date of issue:</b>november 2021 <br />
+			<b>Authorized signature:</b>
+			<img src="" >
+		</div>
+	</div>
+			<p>1.students are obligate to bear the id card at every moment of their stay at university <br />
+		2.if the id card is lost or destroyed ,the student must pay for the issuance of the replacement <br />
+		3.Return the id card upon withdrawal from the Program or graduation </p>
+
+</div></div>
+		
+
+	
+	{%endfor%}
+
+ 
 
 </body>
 </html>

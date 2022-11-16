@@ -47,11 +47,11 @@
 <!--Main Navigation-->
 <header>
   <!-- Sidebar -->
-  <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white">
+  <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-success">
     <div class="position-sticky">
       <div class="list-group list-group-flush mx-3 mt-4">
         <a
-          href="#"
+          href="{%url 'registeral:dash'%}"
           class="list-group-item list-group-item-action py-2 ripple"
           aria-current="true"
         >
@@ -60,41 +60,44 @@
         <a href="#" class="list-group-item list-group-item-action py-2 ripple active">
           <i class="fas fa-chart-area fa-fw me-3"></i><span>Webiste traffic</span>
         </a>
-        <a href="#" class="list-group-item list-group-item-action py-2 ripple"
-          ><i class="fas fa-lock fa-fw me-3"></i><span>Password</span></a
+        <a href="{%url 'registeral:libregister'%}" class="list-group-item list-group-item-action py-2 ripple"
+          ><i class="fas fa-lock fa-fw me-3"></i><span>add librarist</span></a
         >
-        <a href="maker/" class="list-group-item list-group-item-action py-2 ripple"
+        <a href="{%url 'registeral:maker'%}" class="list-group-item list-group-item-action py-2 ripple"
           ><i class="fas fa-book fa-fw me-3"></i><span>id maker</span></a
         >
-        <a href="mark/" class="list-group-item list-group-item-action py-2 ripple">
+        <a href="{%url 'registeral:mark'%}" class="list-group-item list-group-item-action py-2 ripple">
           <i class="fas fa-chart-pie fa-fw me-3"></i><span>admark</span>
         </a>
-        <a href="lectur/" class="list-group-item list-group-item-action py-2 ripple"
+        <a href="{%url 'registeral:lectur'%}" class="list-group-item list-group-item-action py-2 ripple"
           ><i class="fas fa-user fa-fw me-3"></i><span>lecturer</span></a
         >
-        <a href="register/" class="list-group-item list-group-item-action py-2 ripple"
+        <a href="{%url 'registeral:register'%}" class="list-group-item list-group-item-action py-2 ripple"
         >
         <i class="fas fa-building fa-fw me-3"></i><span>new admin</span></a
         >
-        <a href="departiment/" class="list-group-item list-group-item-action py-2 ripple"
+        <a href="{%url 'registeral:departiment'%}" class="list-group-item list-group-item-action py-2 ripple"
           ><i class="fas fa-building fa-fw me-3"></i><span>departiment</span></a
         >
-        <a href="calendar/" class="list-group-item list-group-item-action py-2 ripple"
+        <a href="{%url 'registeral:calendar'%}" class="list-group-item list-group-item-action py-2 ripple"
           ><i class="fas fa-calendar fa-fw me-3"></i><span>Calendar</span></a
         >
-        <a href="student/" class="list-group-item list-group-item-action py-2 ripple"
+        <a href="{%url 'registeral:student'%}" class="list-group-item list-group-item-action py-2 ripple"
           ><i class="fas fa-users fa-fw me-3"></i><span>students</span></a
         >
-        <a href="profile/" class="list-group-item list-group-item-action py-2 ripple"
+        <a href="" class="list-group-item list-group-item-action py-2 ripple"
           ><i class="fas fa-user fa-fw me-3"></i><span>profile</span></a
-        >
+        >{%if typ == 1 %}
+        <a href="{%url 'registeral:permition'%}" class="list-group-item list-group-item-action py-2 ripple"
+        ><i class="fas fa-users fa-fw me-3"></i><span>permition</span></a
+      >{%endif%}
       </div>
     </div>
   </nav>{%endblock%}
   <!-- Sidebar -->
   {%block topbar%}
   <!-- Navbar -->
-  <nav id="main-navbar" class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
+  <nav id="main-navbar" class="navbar navbar-expand-lg navbar-light bg-info fixed-top">
     <!-- Container wrapper -->
     <div class="container-fluid">
       <!-- Toggle button -->
@@ -206,7 +209,7 @@
             aria-expanded="false"
           >
             <img
-              src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img (31).webp"
+              src="https://3.bp.blogspot.com/-LeRk8K3FxI0/Yhx8Aa2Li_I/AAAAAAAAABM/bIGyXyFEI2M3ZM_MgkzNFnBP1apZMiVKgCK4BGAYYCw/s113/e.jpg"
               class="rounded-circle"
               height="22"
               alt="Avatar"
@@ -234,38 +237,107 @@
 </header>{%endblock%}
 <!--Main Navigation-->
 {%block main%}
-<!--Main layout-->
-<main style="margin-top: 58px;">
-  <div class="swiper-container slideshow">
+<div></div>
+<div class="swiper-container slideshow " style="height: 200px;" >
 
-    <div class="swiper-wrapper">
+  <div class="swiper-wrapper">
 
-      <div class="swiper-slide slide">
-        <div class="slide-image" style="background-image: url(https://images.unsplash.com/photo-1538083024336-555cf8943ddc?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=66b476a51b19889e13182c0e4827af18&auto=format&fit=crop&w=1950&q=80)"></div>
-        <span class="slide-title">welcome to jku collage managemaent system website</span>
-      </div>
+    <div class="swiper-slide slide">
+      <div class="slide-image" style="background-image: url(https://images.unsplash.com/photo-1538083024336-555cf8943ddc?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=66b476a51b19889e13182c0e4827af18&auto=format&fit=crop&w=1950&q=80)"></div>
+      <span class="slide-title">welcome to jku collage managemaent system website</span>
+    </div>
 
-      <div class="swiper-slide slide">
-        <div class="slide-image" style="background-image: url(https://images.unsplash.com/photo-1500375592092-40eb2168fd21?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=e07d2457879a4e15577ec75a31023e47&auto=format&fit=crop&w=2134&q=80"></div>
-        <span class="slide-title">Meet ocean</span>
-      </div>
+    <div class="swiper-slide slide">
+      <div class="slide-image" style="background-image: url(https://images.unsplash.com/photo-1482059470115-0aadd6bf6834?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=267bba9a4e280ec64388fe8fb01e9d1b&auto=format&fit=crop&w=1950&q=80"></div>
+      
+      <span class="slide-title">Meet ocean of our collage management system</span>
+    </div>
 
-      <div class="swiper-slide slide">
-        <div class="slide-image" style ="background-image: url(https://images.unsplash.com/photo-1482059470115-0aadd6bf6834?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=267bba9a4e280ec64388fe8fb01e9d1b&auto=format&fit=crop&w=1950&q=80"></div>
-        <span class="slide-title">Around the world</span>
-      </div>
-      <div class="swiper-slide slide">
-        <div class="slide-image" style ="background-image: url(https://images.unsplash.com/photo-1482059470115-0aadd6bf6834?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=267bba9a4e280ec64388fe8fb01e9d1b&auto=format&fit=crop&w=1950&q=80"></div>
-        <span class="slide-title">egalcho</span>
-      </div>
-      <div class="slideshow-pagination"></div>
+    <div class="swiper-slide slide">
+      <div class="slide-image" style="background-image: url(https://images.pexels.com/photos/414102/pexels-photo-414102.jpeg?cs=srgb&dl=pexels-pixabay-414102.jpg&fm=jpg"></div>
+      
+      <span class="slide-title">Around the world</span>
+    </div>
+    {%for cl in cl%}
+    <div class="swiper-slide slide">
+      <div class="slide-image" style ="background-image: url(https://images.unsplash.com/photo-1482059470115-0aadd6bf6834?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=267bba9a4e280ec64388fe8fb01e9d1b&auto=format&fit=crop&w=1950&q=80"></div>
+      <span class="slide-title">{{cl.name}} &nbsp;&nbsp;&nbsp;{{cl.descr}}</span>
+     
+    </div>
+    <div class="swiper-slide slide">
+      <div class="slide-image" style ="background-image: url(https://i.pinimg.com/564x/09/80/24/0980246ada4bd57e05f26250b4cbd2be.jpg"></div>
+      <span class="slide-title">start date:{{cl.dat}} &nbsp;&nbsp;&nbsp;anaounced date:{{cl.dt}}</span>
+     
+    </div>
+    {%endfor%}
+    <div class="slideshow-pagination"></div>
 
-      <div class="slideshow-navigation">
-        <div class="slideshow-navigation-button prev"><span class="fas fa-chevron-left"></span></div>
-        <div class="slideshow-navigation-button next"><span class="fas fa-chevron-right"></span></div>
-      </div>
-  
-    </div></div></main></html>
+    <div class="slideshow-navigation">
+      <div class="slideshow-navigation-button prev"><span class="fas fa-chevron-left"></span></div>
+      <div class="slideshow-navigation-button next"><span class="fas fa-chevron-right"></span></div>
+    </div>
+
+  </div></div>
+  </main></html>
+
+    
+    <script>
+    window.onload = function () {
+    
+    var dataPoints = [];
+    
+    var options = {
+      theme: "light2",
+      title: {
+        text: "website trafic"
+      },
+      data: [{
+        type: "spline",
+        dataPoints: dataPoints
+      }]
+    };
+    
+    $("#chartContainer").CanvasJSChart(options);
+    updateData();
+    
+    // Initial Values
+    var xValue = 0;
+    var yValue = 10;
+    var newDataCount = 6;
+    
+    function addData(data) {
+      if (newDataCount != 1) {
+        $.each(data, function (key, value) {
+          dataPoints.push({ x: value[0], y: parseInt(value[1]) });
+          xValue++;
+          yValue = parseInt(value[1]);
+        });
+        newDataCount = 1;
+      } else {
+        //dataPoints.shift();
+        dataPoints.push({ x: data[0][0], y: parseInt(data[0][1]) });
+        xValue++;
+        yValue = parseInt(data[0][1]);
+      }
+      $("#chartContainer").CanvasJSChart().render();
+      setTimeout(updateData, 1500);
+    }
+    
+    function updateData() {
+      $.getJSON("https://canvasjs.com/services/data/datapoints.php?xstart=" + xValue + "&ystart=" + yValue + "&length=" + newDataCount + "type=json", addData);
+    }
+    
+    }
+    </script>
+    </head>
+    <body>
+    <div id="chartContainer" style="height: 300px; width: 100%;"></div>
+    <script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
+    <script src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>
+    </body>
+    </html>
+
+
 </main>{%endblock%}
 <!--Main layout-->
 <style>

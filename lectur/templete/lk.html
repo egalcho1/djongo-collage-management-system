@@ -1,0 +1,117 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+{%extends 'rindex.html'%}
+<body>
+  {%block main%}
+<!--Main layout-->
+<main style="margin-top: 58px;">
+    <button type="button" class="btn bg-green" style="float:right ;background-color:lightgreen
+    "
+        data-toggle="modal" data-target="#exampleModal">
+       
+    
+        <span class="bi-plus" style="font-size:30px ;">update</span>
+      </button>
+    
+      <table border="1" class="table table-hover shadow" style="margin-right: 20px;">
+   
+        <tr>
+            <th>id</th>
+            <th>fname</th>
+            <th>lname</th>
+            <th>sid</th>
+            <th>quez</th>
+    
+            <th>mid</th>
+            <th>assignment</th>
+            <th>final</th>
+            <th>total</th>
+            <th>grade</th>
+            <th>add amerk</th>
+           
+        </tr>
+        {% for x in ma %}
+        <tr>
+        <td>{{ x.id }}</td>
+        <td>{{ x.fname }}</td>
+        <td>{{ x.lname }}</td>
+        <td>{{ x.sid }}</td>
+        <td>{{ x.mark2 }}</td>
+        <td>{{ x.mark4 }}</td>
+        <td>{{ x.mark3 }}</td>
+        <td>{{ x.mark5 }}</td>
+        <td>{{ x.total }}</td>
+        <td>{{ x.grade }}</td>
+        <td><a href="{%url 'lectur:addm' x.sid%}" class="bi-plus-circle"></a></td>
+      
+        
+        </tr>
+        {% endfor %}
+        </table>
+         
+           
+</main>
+<div class="container mt-3" style="width: 700px;">
+   
+    
+   
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5>add new mark</h5>
+                    <button type="button" class="close"
+                        data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">
+                            ×
+                        </span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                
+                    
+                    <a href="#" data-toggle="tooltip"
+                        title="" data-placement="right">
+                        <form action="" method="post">
+                            {%csrf_token%}
+                          {%for n in ma%}
+                            <label class="form-label">quez</label>
+                            <input type="text" class="form-control" name="quez" value="{{n.mark2}}">
+                            <label class="form-label">mid</label>
+                            <input type="text" class="form-control" name="mid" value="{{n.mark4}}">
+                            <label class="form-label">assignment</label>
+                            <input type="text" class="form-control" name="ass" value="{{n.mark3}}">
+                            <label class="form-label">final</label>
+                            <input type="text" class="form-control" name="final" value="{{n.mark5}}">
+                            <button type="submit" class="btn btn-success">save</button>
+                           {%endfor%}
+                        </form>
+                    </a>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary"
+                        data-dismiss="modal">
+                        Close
+                    </button>
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{%endblock%}
+{%block sidebar%}
+{%endblock%}
+
+
+</body>
+</html>

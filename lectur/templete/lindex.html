@@ -15,7 +15,7 @@
 <!--Main Navigation-->
 <header>
   <!-- Sidebar -->
-  <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white">
+  <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-success">
     <div class="position-sticky">
       <div class="list-group list-group-flush mx-3 mt-4">
         <a
@@ -28,39 +28,40 @@
         <a href="#" class="list-group-item list-group-item-action py-2 ripple active">
           <i class="fas fa-chart-area fa-fw me-3"></i><span>Webiste traffic</span>
         </a>
-        <a href="#" class="list-group-item list-group-item-action py-2 ripple"
-          ><i class="fas fa-lock fa-fw me-3"></i><span>Password</span></a
+       
+        <a href="{%url 'lectur:addmarks'%}" class="list-group-item list-group-item-action py-2 ripple"
+        ><i class="fas fa-calendar fa-fw me-3"></i><span>addmark</span></a
+      >
+       
+        
+        {%if type == 0%}
+        <a href="{%url 'lectur:headreg'%}" class="list-group-item list-group-item-action py-2 ripple"
+          ><i class="fas fa-globe fa-fw me-3"></i><span>departiment head</span></a
         >
-        <a href="#" class="list-group-item list-group-item-action py-2 ripple"
-          ><i class="fas fa-chart-line fa-fw me-3"></i><span>Analytics</span></a
+        <a href="{%url 'lectur:depart'%}" class="list-group-item list-group-item-action py-2 ripple"
+          ><i class="fas fa-building fa-fw me-3"></i><span>departiment</span></a
         >
-        <a href="#" class="list-group-item list-group-item-action py-2 ripple">
-          <i class="fas fa-chart-pie fa-fw me-3"></i><span>SEO</span>
-        </a>
-        <a href="#" class="list-group-item list-group-item-action py-2 ripple"
-          ><i class="fas fa-chart-bar fa-fw me-3"></i><span>Orders</span></a
-        >
-        <a href="mark/" class="list-group-item list-group-item-action py-2 ripple"
-          ><i class="fas fa-globe fa-fw me-3"></i><span>student</span></a
-        >
-        <a href="clear/" class="list-group-item list-group-item-action py-2 ripple"
-          ><i class="fas fa-building fa-fw me-3"></i><span>clearance</span></a
-        >
-        <a href="#" class="list-group-item list-group-item-action py-2 ripple"
-          ><i class="fas fa-calendar fa-fw me-3"></i><span>Calendar</span></a
-        >
-        <a href="users/" class="list-group-item list-group-item-action py-2 ripple"
-          ><i class="fas fa-users fa-fw me-3"></i><span>students</span></a>
-        <a href="proimage/" class="list-group-item list-group-item-action py-2 ripple"
-          ><i class="fas fa-money-bill fa-fw me-3"></i><span>profile</span></a
-        >
+        <a href="{%url 'lectur:addmarks'%}" class="list-group-item list-group-item-action py-2 ripple"
+        ><i class="fas fa-calendar fa-fw me-3"></i><span>addmark</span></a
+      >
+        
+        {%elif type == 1%}
+       
+        <a href="{%url 'lectur:feedback'%}" class="list-group-item list-group-item-action py-2 ripple"
+        ><i class="fas fa-calendar fa-fw me-3"></i><span>feedback</span></a
+      >
+      <a href="{%url 'lectur:ncourse'%}" class="list-group-item list-group-item-action py-2 ripple"
+        ><i class="fas fa-users fa-fw me-3"></i><span>course</span></a>
+       
+       
+        {%endif%}
       </div>
     </div>
   </nav>{%endblock%}
   <!-- Sidebar -->
   {%block topbar%}
   <!-- Navbar -->
-  <nav id="main-navbar" class="navbar navbar-expand-lg navbar-light bg-white fixed-top shadow">
+  <nav id="main-navbar" class="navbar navbar-expand-lg navbar-light bg-info fixed-top shadow">
     <!-- Container wrapper -->
     <div class="container-fluid">
       <!-- Toggle button -->
@@ -216,7 +217,47 @@
 {%block main%}
 <!--Main layout-->
 <main style="margin-top: 58px;">
-  <div class="container pt-4">welcome&nbsp; &nbsp;{{username}}</div>
+  <div class="container pt-4">
+    <!DOCTYPE HTML>
+    <html>
+    <head>
+    <script>
+    window.onload = function () {
+    
+    var options = {
+      animationEnabled: true,
+      title: {
+        text: "all student in our collage"
+      },
+      data: [{
+        type: "doughnut",
+        innerRadius: "40%",
+        showInLegend: true,
+        legendText: "{label}",
+        indexLabel: "{label}: #percent%",
+        dataPoints: [
+          { label: "numbers student", y: 6492917 },
+          { label: "total course", y: 7380554 },
+          { label: "women student", y: 1610846 },
+          { label: "male student", y: 950875 },
+          { label: "lecturers", y: 900000 }
+        ]
+      }]
+    };
+    $("#chartContainer").CanvasJSChart(options);
+    
+    }
+    </script>
+    </head>
+    <body>
+    <div id="chartContainer" style="height: 300px; width: 100%;"></div>
+    <script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
+    <script src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>
+    </body>
+    </html>
+
+
+  </div>
 </main>{%endblock%}
 <!--Main layout-->
 <style>

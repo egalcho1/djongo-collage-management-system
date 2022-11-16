@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {%extends 'index.html'%}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+{%block main%}
+{%load static%}
+
+<link rel="stylesheet" href="{%static 'main/css/bootstrap.css'%}">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+<body>
+  
+
+
+ <br><br><br><br>
+<div class="container-sm shadow" style="width:400px" >
+   
+<form action="" method="post">
+    {%csrf_token%}
+   <select name="course" class="form-control">
+    {%for n in cr%}
+    <option value="{{n.id}}">{{n.name}}</option>
+    {%endfor%}
+   </select>
+    <button class="bi-search">search</button>
+    </form>
+   
+    <div class="container-sm shadow" style="width:400px">
+<table class="table table-hover">
+    {%for n in mrk%}
+       <tr class="bg-success"><td>lecturer</td><td>{{n.adby}}</tr>
+       </th>
+       <tr><td>quez</td><td>{{n.mark2}}</td></tr>
+       <tr><td>assignment</td><td>{{n.mark3}}</td></tr>
+       <tr><td>mid</td><td>{{n.mark4}}</td></tr>
+       <tr><td>final</td><td>{{n.mark5}}</td></tr>
+      
+       <tr class="bg-danger"><td>total</td><td>{{n.mark2}}</td></tr>
+
+       <tr class="bg-warning"><td>grade</td><td>{{n.grade}}</td></tr>
+       {%endfor%}
+      
+      
+
+   </table>
+</div>
+</div>
+<script>
+    var depa=document.querySelector('#depa');
+    depa.addEventListener('click',()=>{
+        document.querySelector('#form').style=display='block';
+    })
+</script>
+{%endblock%}
+</body>
+</html>

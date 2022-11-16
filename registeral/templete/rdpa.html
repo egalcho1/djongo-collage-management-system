@@ -10,13 +10,17 @@
 <body>
   {%block main%}
 <!--Main layout-->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+
 <main style="margin-top: 58px;">
     <button type="button" class="btn bg-green" style="float:right ;background-color:lightgreen
     "
         data-toggle="modal" data-target="#exampleModal">
        
     
-        <span class="bi-plus" style="font-size:30px ;">new department</span>
+        <span class="bi-plus-circle" style="font-size:30px ;">new </span>
       </button>
     
   <table border="1" class="table table-hover shadow">
@@ -27,6 +31,7 @@
         <th>description</th>
         <th>delete</th>
         <th>update</th>
+        <th>add course</th>
         
 
     </tr>
@@ -37,9 +42,9 @@
     <td>{{ x.name }}</td>
     <td>{{ x.colage }}</td>
     <td>{{ x.descr }}</td>
-    <td><a href="rdelete/{{ x.id }}">delete</a></td>
-    <td><a href="update/{{ x.id }}">update</a></td>
-    <td><a href="course/{{ x.id }}">add course</a></td>
+    <td><a href="rdelete/{{ x.id }}" class="bi-calendar-x-fill"></a></td>
+    <td><a href="update/{{ x.id }}" class="bi-pencil"></a></td>
+    <td><a href="course/{{ x.id }}" class="bi-plus-circle"></a></td>
     
     </tr>
     {% endfor %}

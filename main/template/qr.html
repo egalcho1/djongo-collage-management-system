@@ -17,26 +17,39 @@
 {%block main%}
 <!--Main layout-->
 <main style="margin-top: 58px;">
-  <div class="container-sm" style="width:400px ; outline:2px solid cyan"><center>
-    <table class="table table-hover">
-  {% for st in st %}
-  <tr>
-    <th>frist name</th>
-    <th>last name</th>
+  <button onclick="window.print()" class="btn btn-info" style="float: right">print</button>
+  <div class="container-sm" style="width:400px ;">
+    {%if cm > 0%}
+    <div class="">
+      <h1 class="btn bg-success">you have university propert please give back first</h1>
+      <p>please see your reported item click link bellow</p>
+      <a href="{%url 'student:seecomp'%}">see report</a>
+    </div>
+  {%else%}
+  <div class="container-sm shadow-lg bg-success">
+  <table class="table table-hover shadow-lg bg-white">
+    {% for st in st %}
+    <tr class=" ">
+     <td class="" style="color:black">hawaasa university online clearance system</td>
+    </tr>
+  <tr class="bg-success ">
+  <td><p><b>name:</b> {{st.fname}} &nbsp; &nbsp; {{st.lname}}</p></td><br>
+  <td><b>sid:</b>{{st.sid}}</td>
   </tr>
-<tr>
-<td><p> {{st.fname}}</p></td>
-<td><p>  {{st.lname}}</p></td>
-</tr>
-<tr><td><p>this clearance is given to student name mentioned above and he fineshed his calender and he has no complent and our organizetion wishs to him good gurny</p></td></tr>
-<tr>
-  <td>please scan this for more imformation</td>
-</tr>
-<tr>
-<td><img src="{% static 'main/qr/qr.png' %}" alt="My image"></td>
-</tr>
-<tr> <button onclick="window.print()" class="btn btn-info">print</button></tr>
-  {%endfor%}</table></center></div>
+  <tr class="m-2"><td><p class="m-2"style="margin-left:10%">this clearance is given to student name mentioned above and he has fineshed his calender and he has no any kind of orginazation property so he is free to join his family our orginazation wishes to him all the best</p></td></tr>
+  <tr><hr>
+    <td>please print this for more imformation</td>
+  </tr>
+  <tr>
+  <td>
+   
+ <img src="{%static 'qrcode/'%}{{sid}}.png" alt="{{sid}}" style="width:120px;heigth:70px">
+   
+   </td>
+  </tr>
+  <tr></tr>
+    {%endfor%}</table><br><br></div></div>
+  {%endif%}
 </main>{%endblock%}
 <!--Main layout-->
 

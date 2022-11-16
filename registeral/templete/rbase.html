@@ -82,7 +82,20 @@
                             <input type="email" class="form-control" name="email">
                             <label class="form-label">password</label>
                             <input type="password" class="form-control" name="password">
-
+                            <label class="form-label">select tpe</label>
+          <select name="type" class="form-control">
+                <option value="1">regural</option>
+                <option value="0">private</option>
+          </select>
+          <label class="form-label">semister</label>
+          <input type="number" name="sem" class="form-control">
+          <label class="form-label">select departiment</label>
+          <select name="dp" class="form-control">
+             {% for dp in depart%}
+                <option value="{{dp.id}}">{{dp.name}}</option>
+                
+                {%endfor%}
+          </select>
                             <button type="submit" class="btn btn-success">save</button>
                         </form>
                     </a>

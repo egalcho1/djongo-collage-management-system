@@ -7,99 +7,58 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 </head>
-{%extends 'rindex.html'%}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
 <body>
-  {%block main%}
 <!--Main layout-->
-<main style="margin-top: 58px;">
+<div class="container-sm shadow">
+<form action="" method="post">
+    <input type="text" id="search" placeholder="search samething..">
+    <button class="bi-search">search</button>
+    </form>
     <button type="button" class="btn bg-green" style="float:right ;background-color:lightgreen
     "
         data-toggle="modal" data-target="#exampleModal">
        
     
-        <span class="bi-plus" style="font-size:30px ;">new mark</span>
+       
       </button>
-    
-  <table border="1" class="table table-hover shadow" style="margin-right: 20px;">
+  <table  class="table table-hover shadow" style="margin-right: 20px;">
     <tr>
-        <th>id</th>
-        <th>fname</th>
-        <th>lname</th>
-        <th>student id</th>
-        <th>email</th>
-        <th>delete</th>
-        <th>update</th>
-        
-
-    </tr>
-    {% for x in student %}
-    <tr>
-    <td>{{ x.id }}</td>
-    <td>{{ x.fname }}</td>
-    <td>{{ x.lname }}</td>
-    <td>{{ x.sid }}</td>
-    <td>{{ x.email }}</td>
-    <td><a href="delete/{{ x.id }}">delete</a></td>
-    <td><a href="update/{{ x.id }}">update</a></td>
-    <td><a href="complent/{{ x.id }}">complent</a></td>
-    <td><a href="addm/{{ x.id }}">mark</a></td>
-
-    
-    </tr>
+      <th>id</th>
+      <th>name</th>
+      <th>ccode</th>
+      <th>cridt</th>
+      <th>ects</th>
+      
+      <th>add amerk</th>
+      <th>approve</th>
+      
+  </tr>
+  {% for x in st %}
+  <tr>
+  <td>{{ x.id }}</td>
+  <td>{{ x.name }}</td>
+  <td>{{ x.ccode }}</td>
+  <td>{{ x.crdt }}</td>
+  <td>{{ x.ects }}</td>
+  
+  <td><a href="{%url 'lectur:mark' x.id%}" class="bi-plus-circle"></a></td>
+  <td><a href="{%url 'lectur:approve' x.id%}" class="bi-send"></a></td>
+ 
+  
+  </tr>
+  
     {% endfor %}
     </table>
        
     </table>
-
-</main>
-<div class="container mt-3" style="width: 700px;">
-   
-    
-   
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5>add new mark</h5>
-                    <button type="button" class="close"
-                        data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">
-                            ×
-                        </span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                  
-                    <a href="#" data-toggle="tooltip"
-                        title="" data-placement="right">
-                        <form action="" method="post">
-                            <label class="form-label">mark1</label>
-                            <input type="text" class="form-control" name="mark1">
-                            <label class="form-label">mark2</label>
-                            <input type="text" class="form-control" name="mark2">
-                            <label class="form-label">mark3</label>
-                            <input type="text" class="form-control" name="mark3">
-                           
-                            <button type="submit" class="btn btn-success">save</button>
-                        </form>
-                    </a>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary"
-                        data-dismiss="modal">
-                        Close
-                    </button>
-                   
-                </div>
-            </div>
-        </div>
-    </div>
 </div>
+</main>
 
-{%endblock%}
-{%block sidebar%}
-{%endblock%}
+
+
 
 
 </body>

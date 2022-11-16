@@ -1,37 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  {%extends 'index.html'%}
+ 
   {% load crispy_forms_tags%}
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
    {%block title%} <title>Document</title>{%endblock%}
    {%load static%}
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
    <link rel="stylesheet" href="{%static 'main/css/bootstrap.css'%}">
 </head>
 
 
+
+
+
 {%block main%}
-<!--Main layout-->
 <main style="margin-top: 58px;">
-    
-    {%for student in user%}
-    <table class="tabele table-hover shadow " border="1">
-     
+  <div class="container pt-4">welcome&nbsp; &nbsp;{{username}}
+   
+    <table class="tabele table-hover shadow " style="width:800px;margin-left:30px">
+     <tr>
       <th>id</th>
       <th>sid</th>
       <th>username</th>
       <th>email</th>
-      
-        <tbody>
-          <td>{{n}}</td>
-            <td>{{student.sid}}</td>
+      <th>username</th>
+      <th>email</th>
+    </tr><tr>
+      {%for student in lect%}
+      <td>{{student.id}}</td>
+            <td>{{student.username}}</td>
             <td>{{student.fname}}</td>
             <td>{{student.lname}}</td>
-           
-        </tbody>
-    </table>
+           <td><a href="{%url 'student:mesage' student.id%}" ><i class="bi bi-send"></i></a></td>
+      
+    </tr>
+          
+    </table><!DOCTYPE html>
+    <html>
+    <head>
+    
+  </div>
 {%endfor%}
 
 </main>{%endblock%}

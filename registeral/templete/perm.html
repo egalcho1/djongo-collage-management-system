@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   {%extends 'rindex.html'%}
+  {%block main%}
+<br><br><br>
+<div class="container-sm shadow" style="margin-left: 240px;">
+<b class="bi bi-plus-circle btn btn-primary" id="grant"> grante permition</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+</div>
+<div class="row">
+    <div class="col-sm-6">
+     <form action="" method="post" style="display: none;margin-left: 300px;" id="gf">
+{%csrf_token%}
+        <label for="name" class="form-label">name of permition</label>
+        <select name="name" id="" class="form-control">
+            <option value="registration">registration</option>
+            <option value="markaddition">mark addition</option>
+
+        </select>
+        <label for="name" class="form-label">grant </label>
+        <select name="grant" id="" class="form-control">
+            <option value="1">grant</option>
+            <option value="0">denay</option>
+
+        </select>
+        <button type="submit" class="btn btn-info">save</button>
+     </form>
+    </div>
+    <div class="col-sm-6">
+
+
+    </div>
+
+</div>
+<script>
+    var grant=document.querySelector('#grant');
+    grant.addEventListener('click',()=>{
+    document.querySelector('#gf').style.display="block";
+    })
+</script>
+
+{%endblock%}
+
+</body>
+</html>

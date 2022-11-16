@@ -14,16 +14,82 @@
 
 {%block main%}
 <!--Main layout-->
+
 <main style="margin-top: 58px;">
+  <div class="container-sm shadow" style="width:500px">
+  <button  id="yourinfo" class="btn btn-primary">your info</button>&nbsp;&nbsp;&nbsp;<button id="bkg" class="btn btn-primary">family background</button>&nbsp;&nbsp;&nbsp;
     
-   <form action="" method="post" enctype="multipart/form-data">
+   <form action="" method="post" enctype="multipart/form-data" style="display:none ;" id="info">
  {%csrf_token%}
- <input type="hidden" value="{{user}}" name="user">
+ 
+ <input type="hidden" value="{{user}}" name="user" >
+ <label class="form-label">age</label>
+ <input type="date"  class="form-control" name="ag" value="{{stud.age}}" >
+ <label class="form-label">fname</label>
+ <input type="text"  class="form-control" name="fn" value="{{stud.fname}}">
+ <label class="form-label">lname</label>
+ <input type="text"  class="form-control" name="ln" value="{{stud.lname}}">
+ <label class="form-label">nationality</label>
+ <input type="text"  class="form-control" name="nt" value="{{stud.nationality}}">
+ <label class="form-label">region</label>
+ <input type="text"  class="form-control" name="rg" value="{{stud.father}}">
+ <label class="form-label">phone</label>
+ <input type="number"  class="form-control" name="pn">
+ <label class="form-label">zone</label>
+ <input type="text"  class="form-control" name="zn">
+ <label class="form-label">woreda</label>
+ <input type="text"  class="form-control" name="wd">
+ <label class="form-label">kebele</label>
+ <input type="text"  class="form-control" name="qb">
+ <label class="form-label">current postion</label>
+ <input type="text"  class="form-control" name="cp">
+ <label class="form-label">gender</label>
+ <input type="text"  class="form-control" name="gd">
+ <label class="form-label">disablity</label>
+ <input type="text"  class="form-control" name="ds">
+ 
  <label class="form-label">uploads image</label>
  <input type="file"  class="form-control" name="last">
  <button type="submit" class="btn btn-info">upload</button>
    </form>
-</main>{%endblock%}
+   <script>
+    var inf=document.querySelector('#yourinfo');
+    inf.addEventListener('click',()=>{
+      document.querySelector('#info').style.display='block';
+     
+    })
+   </script>
+   <form action="" method="post" enctype="multipart/form-data" style="display:none ;" id="bnfo">
+    {%csrf_token%}
+    <input type="hidden" value="{{user}}" name="user">
+    <label class="form-label">father name</label>
+    <input type="text"  class="form-control" name="fn">
+    <label class="form-label">father ocopation</label>
+    <input type="text"  class="form-control" name="fo">
+    <label class="form-label">father phone</label>
+    <input type="number"  class="form-control" name="lname">
+    <label class="form-label">father age</label>
+    <input type="date"  class="form-control" name="fa">
+   
+    <button type="submit" class="btn btn-info">save</button>
+      </form>
+      <script>
+       var inf=document.querySelector('#bkg');
+       inf.addEventListener('click',()=>{
+         document.querySelector('#bnfo').style.display='block';
+        
+       })
+      </script></div>
+   <style> 
+    #info{
+    animation-timing-function:ease-in;
+  }
+</style>
+   
+   
+</main>
+
+{%endblock%}
 <!--Main layout-->
 
 </body>

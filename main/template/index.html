@@ -15,203 +15,323 @@
 <!--Main Navigation-->
 <header>
   <!-- Sidebar -->
-  <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white">
+  <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-success">
     <div class="position-sticky">
       <div class="list-group list-group-flush mx-3 mt-4">
         <a
-          href="#"
+          href="{%url 'student:dashbord'%}"
           class="list-group-item list-group-item-action py-2 ripple"
           aria-current="true"
         >
           <i class="fas fa-tachometer-alt fa-fw me-3"></i><span>Main dashboard</span>
         </a>
-        <a href="#" class="list-group-item list-group-item-action py-2 ripple active">
+        <a href="{%url 'student:trafic'%}" class="list-group-item list-group-item-action py-2 ripple active">
           <i class="fas fa-chart-area fa-fw me-3"></i><span>Webiste traffic</span>
         </a>
-        <a href="#" class="list-group-item list-group-item-action py-2 ripple"
-          ><i class="fas fa-lock fa-fw me-3"></i><span>Password</span></a
-        >
-        <a href="#" class="list-group-item list-group-item-action py-2 ripple"
-          ><i class="fas fa-chart-line fa-fw me-3"></i><span>Analytics</span></a
-        >
-        <a href="#" class="list-group-item list-group-item-action py-2 ripple">
-          <i class="fas fa-chart-pie fa-fw me-3"></i><span>SEO</span>
-        </a>
-        <a href="#" class="list-group-item list-group-item-action py-2 ripple"
-          ><i class="fas fa-chart-bar fa-fw me-3"></i><span>Orders</span></a
-        >
-        <a href="#" class="list-group-item list-group-item-action py-2 ripple"
-          ><i class="fas fa-globe fa-fw me-3"></i><span>International</span></a
-        >
-        <a href="clear/" class="list-group-item list-group-item-action py-2 ripple"
-          ><i class="fas fa-building fa-fw me-3"></i><span>clearance</span></a
-        >
-        <a href="#" class="list-group-item list-group-item-action py-2 ripple"
-          ><i class="fas fa-calendar fa-fw me-3"></i><span>Calendar</span></a
-        >
-        <a href="users/" class="list-group-item list-group-item-action py-2 ripple"
-          ><i class="fas fa-users fa-fw me-3"></i><span>students</span></a>
-        <a href="proimage/" class="list-group-item list-group-item-action py-2 ripple"
+        <a href="{%url 'student:markstud'%}" class="list-group-item list-group-item-action py-2 ripple"
+        ><i class="fas fa-users fa-fw me-3"></i><span>assisment </span></a>
+        <a href="{%url 'student:clear'%}" class="list-group-item list-group-item-action py-2 ripple"
+        ><i class="fas fa-users fa-fw me-3"></i><span>ask for leave</span></a>
+        
+        <a href="{%url 'student:proimage'%}" class="list-group-item list-group-item-action py-2 ripple"
           ><i class="fas fa-money-bill fa-fw me-3"></i><span>profile</span></a
         >
+        <a href="{%url 'student:sendfeedback'%}" class="list-group-item list-group-item-action py-2 ripple"
+        ><i class="fas fa-money-bill fa-fw me-3"></i><span>feedback</span></a
+      >
+      <a href="{%url 'student:regis'%}" class="list-group-item list-group-item-action py-2 ripple"
+      ><i class="fas fa-money-bill fa-fw me-3"></i><span>register</span></a
+    >
+    <a href="{%url 'student:transcript'%}" class="list-group-item list-group-item-action py-2 ripple"
+  ><i class="fas fa-users fa-fw me-3"></i><span>transcript</span></a>
+        {%if type == 0 %}
+        <a href="{%url 'student:proimage'%}" class="list-group-item list-group-item-action py-2 ripple"
+        ><i class="fas fa-money-bill fa-fw me-3"></i><span>payment</span></a
+      >
+
+        
+        {%endif%}
+        <a href="{%url 'student:movies'%}" class="list-group-item list-group-item-action py-2 ripple"
+        ><i class="fas fa-money-bill fa-fw me-3"></i><span>visit library</span></a
+      >
+        <style>
+         #ac li{
+            display: none;
+          
+          }
+          #ac li:hover {
+          display:block;
+          }
+        </style>
       </div>
     </div>
   </nav>{%endblock%}
   <!-- Sidebar -->
   {%block topbar%}
-  <!-- Navbar -->
-  <nav id="main-navbar" class="navbar navbar-expand-lg navbar-light bg-white fixed-top shadow">
-    <!-- Container wrapper -->
-    <div class="container-fluid">
-      <!-- Toggle button -->
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-mdb-toggle="collapse"
-        data-mdb-target="#sidebarMenu"
-        aria-controls="sidebarMenu"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <i class="fas fa-bars"></i>
-      </button>
+ 
+  <nav class="mynavbar shadow bg-info" id="nv">
+    <span style="font-size:30px;cursor: 
+pointer" onclick="openNav()">☰ 
+</span>
+<span  id="menu">
+ <a href="#"><input type="text" name="" id="" class="glyphicon glyphicon-search" placeholder="search..." value="" style="width:150px;border-radius:20px" />
+</a>
+</span>
+  <span  id="menu">about</span>
+  <a>
+  <i class="fas fa-bell" id="menu"></i>
+  <span  class="badge rounded-pill badge-notification bg-danger">1</span>
+</a>
+{% for im in image%}
+  <span  id="menu1"><img src="{{im.image.url}}" alt="" style="width:30px;height:30px;border-radius:50%;" id="img"/></span>
+ {%endfor%}
 
-      <!-- Brand -->
-      <a class="navbar-brand" href="#">
-        <img
-          src="https://mdbcdn.b-cdn.net/img/logo/mdb-transaprent-noshadows.webp"
-          height="25"
-          alt="MDB Logo"
-          loading="lazy"
-        />
-      </a>
-      <!-- Search form -->
-      <form class="d-none d-md-flex input-group w-auto my-auto">
-        <input autocomplete="off" type="search" class="form-control rounded"
-          placeholder='Search.... ' style="min-width: 225px;"
-        />
-        <span class="input-group-text border-0"><i class="fas fa-search"></i></span>
-      </form>
+  <div class="dropdown1">
+<span class="dropbtn1"  id="menu" class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">more
+</span>
 
-      <!-- Right links -->
-      <ul class="navbar-nav ms-auto d-flex flex-row">
-        <!-- Notification dropdown -->
-        <li class="nav-item dropdown">
-          <a
-            class="nav-link me-3 me-lg-0 dropdown-toggle hidden-arrow"
-            href="#"
-            id="navbarDropdownMenuLink"
-            role="button"
-            data-mdb-toggle="dropdown"
-            aria-expanded="false"
-          >
-            <i class="fas fa-bell"></i>
-            <span class="badge rounded-pill badge-notification bg-danger">1</span>
-          </a>
-          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
-            <li>
-              <a class="dropdown-item" href="#">Some news</a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="#">Another news</a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="#">Something else here</a>
-            </li>
-          </ul>
-        </li>
+ <div class="dropdown-content1">
+   <a href="{%url 'student:proimage'%}">profile</a>
+   <a href="#">settings</a>
+   <a href="{%url 'student:signout'%}">signout</a>
+ </div>
 
-        <!-- Icon -->
-        <li class="nav-item">
-          <a class="nav-link me-3 me-lg-0" href="#">
-            <i class="fas fa-fill-drip"></i>
-          </a>
-        </li>
-        <!-- Icon -->
-        <li class="nav-item me-3 me-lg-0">
-          <a class="nav-link" href="#">
-            <i class="fab fa-github"></i>
-          </a>
-        </li>
+</div>
+</nav>
 
-        <!-- Icon dropdown -->
-        <li class="nav-item dropdown">
-          <a
-            class="nav-link me-3 me-lg-0 dropdown-toggle hidden-arrow"
-            href="#"
-            id="navbarDropdown"
-            role="button"
-            data-mdb-toggle="dropdown"
-            aria-expanded="false"
-          >
-            <i class="flag-united-kingdom flag m-0"></i>
-          </a>
-          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-            <li>
-              <a class="dropdown-item" href="#"
-                ><i class="flag-united-kingdom flag"></i>English
-                <i class="fa fa-check text-success ms-2"></i
-              ></a>
-            </li>
-            <li><hr class="dropdown-divider" /></li>
+<div id="mySidenav" class="sidenav bg-success ">
+  <a href="javascript:void(0)"
+  class="closebtn"
+  onclick="closeNav()">&times;</a>
+<div class="container-sm bg-white shadow" style="width:200px">
+	
+
+  <a
+  href="{%url 'student:dashbord'%}"
+  class="list-group-item list-group-item-action py-2 ripple"
+  aria-current="true"
+>
+  <i class="fas fa-tachometer-alt fa-fw me-3"></i><span>dashboard</span>
+</a>
+<a href="{%url 'student:trafic'%}" class="list-group-item list-group-item-action py-2 ripple active  bg-primary" style="color:white ;">
+  <i class="fas fa-chart-area fa-fw me-3 bg-primary" 
+  ></i><span>traffic</span>
+</a>
+<a href="{%url 'student:proimage'%}" class="list-group-item list-group-item-action py-2 ripple"
+><i class="fas fa-money-bill fa-fw me-3"></i><span>profile</span></a
+>
+<a href="{%url 'student:sendfeedback'%}" class="list-group-item list-group-item-action py-2 ripple"
+><i class="fas fa-money-bill fa-fw me-3"></i><span>feedback</span></a
+>
+
+<a onclick="myFunction()"
+class="dropbtn">Academic </a>
+
+  <div id="myDropdown"
+  class="dropdown-content">
+
+  <a href="{%url 'student:markstud'%}" class="list-group-item list-group-item-action py-2 ripple"
+  ><i class="fas fa-users fa-fw me-3"></i><span>assisment </span></a>
+  <a href="{%url 'student:transcript'%}" class="list-group-item list-group-item-action py-2 ripple"
+  ><i class="fas fa-users fa-fw me-3"></i><span>transcript</span></a>
+  <a href="{%url 'student:clear'%}" class="list-group-item list-group-item-action py-2 ripple"
+  ><i class="fas fa-users fa-fw me-3"></i><span>ask for leave</span></a>
+  <a href="{%url 'student:regis'%}" class="list-group-item list-group-item-action py-2 ripple"
+  ><i class="fas fa-money-bill fa-fw me-3"></i><span>register</span></a
+>
+   </div>
+  </a>
+  {%if type == 0 %}
+  <a href="{%url 'student:proimage'%}" class="list-group-item list-group-item-action py-2 ripple"
+  ><i class="fas fa-money-bill fa-fw me-3"></i><span>payment</span></a
+>
+  
+  {%endif%}
+</div>
+</div>
+
+      <script type="text/javascript" charset="utf-8">
+        function openNav() {
+        document.getElementById("mySidenav")
+        .style.width="250px";
+       }
+       
+       function closeNav() {
+        document.getElementById("mySidenav")
+        .style.width = "0";
+       }
+       
+       function myFunction() {
+       document.getElementById("myDropdown")
+       .classList.toggle("show");
+       }
+       
+       
+       window.onclick = function(event) {
+       if(!event.target.matches('.dropbtn')){
+       
+       var dropdowns = document
+       .getElementsByClassName
+       ("dropdown-content");
+       
+       var i;
+       for(i=0; i < dropdowns.length; i++){
+       var openDropdown = dropdowns[i];
+       if (openDropdown.classList.contains
+       ('show')) {
+       
+       openDropdown.classList.remove('show');
+       
+             }
+           }
+         }
+       }
+       
+        </script>
+        <style type="text/css" media="all">
+          body {
+           font-family: "Lato", sans-serif;
+       }
+       
+       .sidenav {
+           height: 100%;
+           width: 0;
+           position: fixed;
+           z-index: 1;
+           top: 0;
+           left: 0;
+           background-color: #111;
+           overflow-x: hidden;
+           transition: 0.9s;
+           padding-top: 60px;
+       }
+       
+       .sidenav a {
+           padding: 8px 8px 8px 32px;
+           text-decoration: none;
+           font-size: 25px;
+           color: #818181;
+           display: block;
+           transition: 0.3s
+       }
+       
+       .sidenav a:hover, .offcanvas a:focus{
+           color: #f1f1f1;
+       }
+       
+       .sidenav .closebtn {
+           position: absolute;
+           top: 0;
+           right: 25px;
+           font-size: 36px;
+           margin-left: 50px;
+       }
+       
+       @media screen and (max-height: 450px){
+         .sidenav {padding-top: 15px;}
+         .sidenav a {font-size: 18px;}
+       }
+       @media screen and (min-width:360px){
+        #nv {
+       
+        }#nv #menu{padding-left: 200px;}
+        .sidenav a {font-size: 18px;}
+        #sidebarMenu{margin-top: 45px;}
+        #nv #menu1{padding-left: 140px;}
+      }
+       
+       .dropbtn {
            
-          </ul>
-        </li>
-
-        <!-- Avatar -->
-        <li class="nav-item dropdown">
-          {% for im in image%}
-              {% if im is not None%}
-          <a
-            class="nav-link dropdown-toggle hidden-arrow d-flex align-items-center"
-            href="."
-            id="navbarDropdownMenuLink"
-            role="button"
-            data-mdb-toggle="dropdown"
-            aria-expanded="false"
-          ><img src="{{im.image.url}}" style="width:30px; height:30px; border-radius:50%"></a>
-               {%else%}
+           color: white;
+           padding: 16px;
+           font-size: 16px;
+           border: none;
+           cursor: pointer;
+       }
+       
+       .dropbtn:hover, .dropbtn:focus {
+       background-color: #7effa5;
+       }
+       
+       .dropdown {
+           float: right;
+           position: relative;
+           display: inline-block;
+       
+       }
+       
+       .dropdown-content {
+           display: none;
+           position: absolute;
+           background-color: #f9f9f9;
+           min-width: 160px;
+           overflow: auto;
+           box-shadow: 0px 8px 16px 0px
+           rgba(0,0,0,0.2);
+       
+           right: 0;
+       }
+       
+       .dropdown-content a {
+           color: black;
+           padding: 12px 16px;
+           text-decoration: none;
+           display: block;
+       }
+       
+       .dropdown a:hover
+       {background-color: #f1f1f1}
+       
+       .show {display:block;}
+       #topbar span{
+         float: left;
+         padding-left:  30px;
+       }
           
-         
-          <a
-            class="nav-link dropdown-toggle hidden-arrow d-flex align-items-center"
-            href="#"
-            id="navbarDropdownMenuLink"
-            role="button"
-            data-mdb-toggle="dropdown"
-            aria-expanded="false"
-          >
-            <img
-              src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img (31).webp"
-              class="rounded-circle"
-              height="22"
-              alt="Avatar"
-              loading="lazy"
-            />
-          </a>
-          {%endif%}
-          {%endfor%}
-          <ul
-            class="dropdown-menu dropdown-menu-end"
-            aria-labelledby="navbarDropdownMenuLink"
-          >
-            <li>
-              <a class="dropdown-item" href="#">My profile</a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="#">Settings</a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="#">Logout</a>
-            </li>
-          </ul>
-        </li>
-      </ul>
-    </div>
-    <!-- Container wrapper -->
-  </nav>
-  <!-- Navbar -->
-</header>{%endblock%}
+          
+          
+          .dropbtn1 {
+           
+           color: white;
+           padding: 16px;
+           font-size: 16px;
+           border: none;
+           cursor: pointer;
+       }
+       
+       .dropdown1 {
+           position: relative;
+           display: inline-block;
+       }
+       
+       .dropdown-content1 {
+           display: none;
+           position: absolute;
+           background-color: #f9f9f9;
+           min-width: 160px;
+           box-shadow: 0px 8px 16px 0px
+           rgba(0,0,0,0.2);
+       }
+       
+       .dropdown-content1 a {
+           color: black;
+           padding: 12px 16px;
+           text-decoration: none;
+           display: block;
+       }
+       
+       .dropdown-content1
+       a:hover{background-color:#f1f1f1}
+       
+       .dropdown1:hover .dropdown-content1 {
+           display: block;
+       }
+       
+       .dropdown1:hover .dropbtn1 {
+           background-color: #7effa5;
+       }
+        </style>
+     {%endblock%}
 <!--Main Navigation-->
 {%block main%}
 <!--Main layout-->
@@ -219,7 +339,142 @@
   <div class="container pt-4">welcome&nbsp; &nbsp;{{username}}</div>
 </main>{%endblock%}
 <!--Main layout-->
-<style>
+<style type="text/css" media="all">
+  body {
+   font-family: "Lato", sans-serif;
+}
+
+.sidenav1 {
+   height: 100%;
+   width: 0;
+   position: fixed;
+   z-index: 1;
+   top: 0;
+   left: 0;
+   background-color: #111;
+   overflow-x: hidden;
+   transition: 0.9s;
+   padding-top: 60px;
+}
+
+.sidenav1 a {
+   padding: 8px 8px 8px 32px;
+   text-decoration: none;
+   font-size: 25px;
+   color: #818181;
+   display: block;
+   transition: 0.3s
+}
+
+.sidenav1 a:hover, .offcanvas a:focus{
+   color: #f1f1f1;
+}
+
+.sidenav1 .closebtn {
+   position: absolute;
+   top: 0;
+   right: 25px;
+   font-size: 36px;
+   margin-left: 50px;
+}
+
+@media screen and (max-height: 450px){
+ .sidenav1 {padding-top: 15px;}
+ .sidenav1 a {font-size: 18px;}
+}
+
+
+.dropbtn {
+   
+   color: white;
+   padding: 16px;
+   font-size: 16px;
+   border: none;
+   cursor: pointer;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+background-color: #7effa5;
+}
+
+.dropdown {
+   float: right;
+   position: relative;
+   display: inline-block;
+
+}
+
+.dropdown-content {
+   display: none;
+   position: absolute;
+   background-color: #f9f9f9;
+   min-width: 160px;
+   overflow: auto;
+   box-shadow: 0px 8px 16px 0px
+   rgba(0,0,0,0.2);
+
+   right: 0;
+}
+
+.dropdown-content a {
+   color: black;
+   padding: 12px 16px;
+   text-decoration: none;
+   display: block;
+}
+
+.dropdown a:hover
+{background-color: #f1f1f1}
+
+.show {display:block;}
+#topbar span{
+ float: left;
+ padding-left:  30px;
+}
+  
+  
+  
+  .dropbtn1 {
+   
+   color: white;
+   padding: 16px;
+   font-size: 16px;
+   border: none;
+   cursor: pointer;
+}
+
+.dropdown1 {
+   position: relative;
+   display: inline-block;
+}
+
+.dropdown-content1 {
+   display: none;
+   position: absolute;
+   background-color: #f9f9f9;
+   min-width: 160px;
+   box-shadow: 0px 8px 16px 0px
+   rgba(0,0,0,0.2);
+}
+
+.dropdown-content1 a {
+   color: black;
+   padding: 12px 16px;
+   text-decoration: none;
+   display: block;
+}
+
+.dropdown-content1
+a:hover{background-color:#f1f1f1}
+
+.dropdown1:hover .dropdown-content1 {
+   display: block;
+}
+
+.dropdown1:hover .dropbtn1 {
+   background-color: #7effa5;
+}
+
   body {
     background-color: #fbfbfb;
   }
@@ -258,6 +513,7 @@
     padding-top: 0.5rem;
     overflow-x: hidden;
     overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+    
   }
 </style>
 </body>

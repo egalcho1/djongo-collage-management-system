@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   {%extends 'rindex.html'%}
+  {%block main%}
+<script>
+window.onload = function () {
+
+var chart = new CanvasJS.Chart("chartContainer", {
+	animationEnabled: true,
+	theme: "light2", // "light1", "light2", "dark1", "dark2"
+	title:{
+		text: "total report"
+	},
+	axisY: {
+		title: "total report"
+	},
+	data: [{        
+		type: "column",  
+		showInLegend: true, 
+		legendMarkerColor: "grey",
+		legendText: "stundent = st*100000 ",
+		dataPoints: [      
+			{ y: {{st}}*100000, label: "total student" },
+			{ y: {{stf}},  label: "female student" },
+			{ y: {{stm}}*10000,  label: "male student" },
+			{ y: {{dp}}*100000,  label: "departiment" },
+			{ y: {{cs}}*10000,  label: "total course" },
+			{ y: {{lk}}*10000, label: "number of lectur" },
+			{ y: {{lkm}}*1000,  label: "male lectur" },
+			{ y: {{coll}}*10000,  label: "collage" }
+		]
+	}]
+});
+chart.render();
+
+}
+</script>
+</head>
+<body>
+<div id="chartContainer" style="height: 300px; width: 80%;margin-left:240px"></div>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+{%endblock%}
+</body>
+</html>
+</body>
+</html>
+</body>
+</html>

@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from django import forms
 from .models import *
 from main.models import *
+from library.models import Library
 
 class Createuser(UserCreationForm):
         class Meta:
@@ -12,4 +13,9 @@ class Createuser(UserCreationForm):
 class Mark(forms.ModelForm) :
         class Meta:
                 model=Mark
-                fields=['username','mark1','mark2','mark3']      
+                fields=['username','mark1','mark2','mark3'] 
+                
+class Library(forms.ModelForm):
+        class Meta:
+                model=Library
+                fields=['username','password','email']   

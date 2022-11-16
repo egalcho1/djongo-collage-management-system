@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+    {%extends 'slogin.html'%}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {%block main%}
+    <script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
+<script src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>
+<script type="text/javascript" src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>  
+<script type="text/javascript" src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>
+    <!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<br><br><br><br><br><br>
+<h1>welcome</h1>
+<script type="text/javascript">
+window.onload = function() {
+
+var options = {
+	exportEnabled: true,
+	animationEnabled: true,
+	title:{
+		text: "Student data"
+	},
+	legend:{
+		horizontalAlign: "right",
+		verticalAlign: "center"
+	},
+	data: [{
+		type: "pie",
+		showInLegend: true,
+		toolTipContent: "<b>{name}</b>: ${y} (#percent%)",
+		indexLabel: "{name}",
+		legendText: "{name} (#percent%)",
+		indexLabelPlacement: "inside",
+		dataPoints: [
+			{ y: {{stm}}*200, name: "male" },
+			{ y: {{stf}}*200, name: "female" },
+			{ y: {{st}}*400, name: "total" },
+			{ y: 1368, name: "room" },
+			{ y: 684, name: "block"},
+			{ y: 1231.2, name: "building" }
+		]
+	}]
+};
+$("#chartContainer").CanvasJSChart(options);
+
+}
+</script>
+
+</head>
+<body>
+<div id="chartContainer" style="height: 300px; width: 100%;" class="container-sm shadow"></div>
+
+<!DOCTYPE HTML>
+<html>
+<head>
+
+</script>
+</head>
+<body>
+
+</body>
+</html>
+
+</body>
+</html>
+    {%endblock%}
+</body>
+</html>

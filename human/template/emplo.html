@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+<body>
+  
+
+
+ <span class="btn btn-primary bi-plus-circle" style="float:right ;" id="depa">add new</span>
+<div class="container-sm shadow" >
+   <h2 class="table table-hover bg-info">you are in departiment page</h2>
+
+<form action="" method="post" style="display: none; width:300px" id="form" class="shadow">
+    {%csrf_token%}
+    <label class="form-label">first name</label>
+    <input type="text" class="form-control" name="fname">
+    <label class="form-label">last name</label>
+    <input type="text" class="form-control" name="lname">
+    <label class="form-label">salary</label>
+    <input type="text" class="form-control" name="sal">
+    <label class="form-label">age</label>
+    <input type="date" class="form-control" name="age">
+    <label class="form-label">expriance</label>
+    <input type="text" class="form-control" name="exp">
+    <label class="form-label">phone</label>
+    <input type="text" class="form-control" name="phone">
+    <label class="form-label">gruduated from</label>
+    <input type="text" class="form-control" name="fr">
+    <label class="form-label">profetion</label>
+    <input type="text" class="form-control" name="pro">
+    <label class="form-label">email</label>
+    <input type="text" class="form-control" name="email">
+    
+    <button type="submit" class="btn btn-success">save</button>
+
+
+</form>
+<form action="" method="post">
+<input type="text" id="search" placeholder="search samething..">
+<button class="bi-search">search</button>
+</form>
+<table class="table table-hover">
+    <tr>
+       <th>id</th>
+       <th>fname</th>
+       <th>lname</th>
+       <th>salary</th>
+       <th>age</th>
+       <th>expriance</th>
+       <th>fild</th>
+       <th>phone</th>
+       <th>email</th>
+       <th>enter date</th>
+       <th>gruduted from</th>
+       <th>profetion</th>
+       <th>update</th>
+       <th>delete</th>
+       <th>add course</th>
+    </tr>
+    <tr>
+       {%for n in lect%}
+         <td>{{n.id}}</td>
+         <td>{{n.fname}}</td> 
+         <td>{{n.lname}}</td>
+         <td>{{n.salary}}</td>
+         <td>{{n.age}}</td> 
+         <td>{{n.exp}}</td>
+         <td>{{n.fild}}</td> 
+         <td>{{n.phone}}</td>
+         <td>{{n.email}}</td> 
+         <td>{{n.fr}}</td>
+         <td>{{n.pro}}</td> 
+         <td>{{n.dat}}</td> 
+         <td><a href="departup/{{n.id}}" class="bi-pencil"></a></td>
+         <td><a href="departd/{{n.id}}" class="bi-calendar-x-fill"></a></td>
+         <td><a href="" class="bi-plus-circle"></a></td>
+        </tr>
+{%endfor%}
+   
+   </table>
+</div>
+<script>
+    var depa=document.querySelector('#depa');
+    depa.addEventListener('click',()=>{
+        document.querySelector('#form').style=display='block';
+    })
+</script>
+
+</body>
+</html>

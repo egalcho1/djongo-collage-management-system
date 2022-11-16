@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {%extends 'index.html'%}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>{%block main%}
+ <br><br>
+ <span class="bg-warning" style="margin-left: 400px;">the course you submited is listed bellow please take print</span>
+ <button onclick="window.print()" style="float:right">print</button>
+         <div class="container-sm shadow" style="width:600px ;">
+            <table class="table table-striped table-hover">
+             <th>name</th>
+             <th>ccode</th>
+             <th>cridt</th>
+             <th>ects</th>
+             {%for n in tyr%}
+             <tr>
+              <td>{{n.name}}</td>
+              <td>{{n.ccode}}</td>
+              <td>{{n.crdt}}</td>
+              <td>{{n.ects}}</td>
+             </tr>
+             {%endfor%}
+            </table>
+
+         </div>
+    <script>
+        var grant=document.querySelector('#grant');
+        grant.addEventListener('click',()=>{
+        document.querySelector('#gf').style.display="block";
+        })
+    </script>
+    
+
+
+   
+    {%endblock%}
+</body>
+</html>

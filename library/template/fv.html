@@ -1,0 +1,61 @@
+{%extends 'lbhome.html'%}
+
+{%load static%}
+
+<!doctype html>
+<html lang="en">
+<head>
+    {%block main%}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+        crossorigin="anonymous">
+       
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+</head>
+<body><br><br><br><br><br><br>
+    <div class="container-sm shadow-lg" style="width: 700px;">
+       <table class="table table-striped table-hover">
+        <th class="bg-success">id</th>
+        <th  class="bg-success">icon</th>
+        <th  class="bg-success">name</th>
+        <th  class="bg-success">view</th>
+        <th  class="bg-success">download</th>
+        <th  class="bg-success">remove</th>
+        {%for n in file%}
+        <tr>
+            
+            <td>{{forloop.counter}}</td>
+            <td><img src="{%static 'main/n.png'%}" alt="" style="width: 20px;height:20px"></td>
+            <td>{{n.name}}</td>
+            <td><a href="{{n.book.url}}" target="_blanck" class="bi-mask"></a></td>
+            <td><a href="{{n.book.url}}" download class="bi-arrow-down-square"></a></td>
+            <td><a href="{%url 'library:fdel' n.id%}"  class="bg-danger" style="color:white">delete</a></td>
+        </tr>{%endfor%}
+       </table>
+       <div class="container p-4">
+        <div class="pagination justify-content-center">
+            <span class="step-links">
+              {% if movies.has_previous %}
+                  <a href="?page=1">&laquo; first</a>
+                  <a href="?page={{ movies.previous_page_number }}">previous</a>
+              {% endif %}
+
+                <span class="current">
+                    Page {{ movies.number }} of {{ movies.paginator.num_pages }}
+                </span>
+
+              {% if movies.has_next %}
+                  <a href="?page={{ movies.next_page_number }}">next</a>
+                  <a href="?page={{ movies.paginator.num_pages }}">last &raquo;</a>
+              {% endif %}
+            </span>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+</body>
+</html>{%endblock%}

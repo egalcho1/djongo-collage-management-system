@@ -24,7 +24,13 @@ urlpatterns = [
  path('hom/calendar/cdelete/<int:id>/',views.cdelete,name='cdelete'),
  path('hom/calendar/cupdate/<int:id>',views.cupdate,name='cupdate'),
  path('hom/mark/',views.mark,name='mark'),
-]
-if settings.DEBUG:
-        urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
+ path('hom/libregister/',views.libregister,name='libregister'),
+ path('dash/',views.dash,name='dash'),
+ path('permition/',views.permition,name='permition'),
+ 
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
+#if settings.DEBUG:
+      #  urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
+#if settings.DEBUG:  
+       # urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
