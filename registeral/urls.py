@@ -27,6 +27,8 @@ urlpatterns = [
  path('hom/libregister/',views.libregister,name='libregister'),
  path('dash/',views.dash,name='dash'),
  path('permition/',views.permition,name='permition'),
+ path('klmrdelete/<int:id>/',views.klmrdelete,name='klmrdelete'),
+ path('klmupdate/<int:id>/',views.klmupdate,name='klmupdate'),
  
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

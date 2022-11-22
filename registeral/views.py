@@ -289,8 +289,10 @@ def libregister(request):
             send_mail( subject, message, email_from, recipient_list )
            
             return reverse('registeral:hom')
+    lk=Library.objects.filter()
+    
    
-    return render(request,'library.html',{})
+    return render(request,'klm.html',{'lk':lk})
 def dash(request):
     stm=Student.objects.filter(gender="male").count()
     stf=Student.objects.filter(gender="femele").count()
@@ -317,4 +319,11 @@ def permition(request):
       
         return render(request,'perm.html',{})
     return render(request,'perm.html',{})
+def klmrdelete(request,id):
+    mn=Library.objects.get(id=id)
+    mn.delete()
+    kl=Library.objects.filter()
+    return render(request,'klm.html',{'kl':kl})
+def klmupdate(request,id):
+    lb=Library.objects.get(id=id)
             

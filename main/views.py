@@ -312,6 +312,7 @@ def transcript(request):
     stud=Student.objects.get(sid=request.session['sid'])
     cm = Comulative.objects.filter(stud=stud.id).order_by('-sem')
     #items = Comulative.objects.all().aggregate(Sum('ect'))
+    
     items =  Comulative.objects.filter().aggregate(items=Sum("ect"))["items"]
     item =  Comulative.objects.filter().aggregate(item=Sum("gpa"))["item"]
     com=item/items
