@@ -17,7 +17,7 @@
         data-toggle="modal" data-target="#exampleModal">
        
     
-        <span class="bi-plus" style="font-size:30px ;">new student</span>
+        <span class="bi-plus" style="font-size:30px ;"></span>
       </button>
       <form action="" method="post">
         {%csrf_token%}
@@ -50,7 +50,7 @@
               <td>{{ x.sid }}</td>
               <td>{{ x.email }}</td>
              
-              <td><a href="{%url 'registeral:rscompl' x.id %}">complement</a></td>
+              <td><a href="">complement</a></td>
               </tr>
     
     
@@ -100,13 +100,7 @@
           </select>
           <label class="form-label">semister</label>
           <input type="number" name="sem" class="form-control">
-          <label class="form-label">select departiment</label>
-          <select name="dp" class="form-control">
-             {% for dp in depart%}
-                <option value="{{dp.id}}">{{dp.name}}</option>
-                
-                {%endfor%}
-          </select>
+          
                             <button type="submit" class="btn btn-success">save</button>
                         </form>
                     </a>

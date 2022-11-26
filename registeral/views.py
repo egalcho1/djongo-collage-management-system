@@ -59,19 +59,63 @@ def login(request):
     return render(request,'rlogin.html',Context)
 
 #@login_required(login_url='login') 
-
-def student(request):
+def depart(request):
     if request.method=='POST':
-        fname=request.POST['fname']
-        lname=request.POST['lname']
-        sid=request.POST['sid']
-        email=request.POST['email']
-        pas=request.POST['password']
-        type=request.POST['type']
-        sem=request.POST['sem']
+        id=request.POST['dep']
+        depart=Departiment.objects.get(id=id)
+        student=Student.objects.filter(depa=depart)
+        return render(request,'rbase.html',{'student':student})
+    cr=Departiment.objects.filter()
+    return render(request,'rbase.html',{'cr':cr})
+def sdepa(request):
+    sd=Departiment.objects.filter()
+    return render(request,"sd.html",{'sd':sd})
+def rscompl(request,id):
+    if request.method=='POST':
+      user=request.POST['block']
+      passw=request.POST['room'] 
+      dat=request.POST['dt']
+      name=request.POST['name']  
+      sector="registeral" 
+      username=request.session['username']
+      st=User.objects.get(username=username)
+      stud=Student.objects.get(id=id)
+      cm=Complent(title=user,discription=passw,uid=st.id,stid=stud,sector=sector,name=name,dat=dat)
+      cm.save()
+      stud.comp+=1
+      stud.save()
+      subject='jku complent information'
+      message=f'hello,{stud.sid},this is to inform you that you thake same originization property on=,{user},explanetion=,{passw},from={sector}'
+      email_from=settings.EMAIL_HOST_USER
+      recipient_list=[stud.email,]
+      send_mail(subject,message,email_from,recipient_list)
+    st=Student.objects.filter().all()
+    stu=Student.objects.get(id=id)
+    com=Complent.objects.filter(stid=stu,sector="registeral")
+    return render(request,'rsc.html',{'st':st,'com':com})
+def cdele(request,id):
+    cm=Complent.objects.get(id=id)
+    st=cm.stid
+    st=Student.objects.get(sid=st)
+    st.comp-=1
+    st.save()
+    cm.delete()
+    com=Complent.objects.filter(stid=st)
+    return render(request,'rsc.html',{'st':st,'com':com})
+    
+def student(request,id):
+    
+    if request.method=='POST':
+        fname='fname' in request.POST and request.POST['fname']
+        lname='lname' in request.POST and request.POST['lname']
+        sid='sid' in request.POST and request.POST['sid']
+        email='email' in request.POST and request.POST['email']
+        pas='password' in request.POST and request.POST['password']
+        type='type' in request.POST and request.POST['type']
+        sem='type' in request.POST and request.POST['sem']
         year=float(sem)/2
-        dp=request.POST['dp']
-        dep=Departiment.objects.get(id=dp)
+        
+        dep=Departiment.objects.get(id=id)
         admin=request.session['username']
         user=User.objects.get(username=admin)
         rd=Student.objects.create(fname=fname,lname=lname,sid=sid,radmin=user,email=email,password=pas,type=type,sem=sem,year=year,depa=dep)
@@ -89,7 +133,9 @@ def student(request):
             return redirect('..')
     student=Student.objects.all()
     depart=Departiment.objects.all()
-    return render(request,'rbase.html',{'student':student,'depart':depart})
+    
+    cr=Departiment.objects.filter()
+    return render(request,'rsr.html',{'student':student,'depart':depart,'cr':cr})
 def delete(request,id):
     member=User.objects.get(id=id)
     member.delete()
@@ -138,7 +184,14 @@ def complent(request,id):
       recipient_list=[stud.email,]
       send_mail(subject,message,email_from,recipient_list)
       st=Student.objects.filter().all()
-      return render(request,'rbase.html',{'student':st})
+      com=Complent.objects.filter(stid=id)
+      dp=Departiment.objects.filter()
+      if request.method=='POST':
+        id=request.POST['dep']
+        depart=Departiment.objects.get(id=id)
+        student=Student.objects.filter(depa=depart)
+        cr=Departiment.objects.filter()
+      return render(request,'rbase.html',{'com':com,'cr':dp})
     
      
      
