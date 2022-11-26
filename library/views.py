@@ -65,7 +65,7 @@ def compl(request,id):
       stud.comp+=1
       stud.save()
       subject='jku complent information'
-      message=f'hello,{stud.sid},this is to inform you that you are complement on=,{user},explanetion=,{passw},from={sector}'
+      message=f'hello,{stud.sid},this is to inform you that you thake same originization property on=,{user},explanetion=,{passw},from={sector}'
       email_from=settings.EMAIL_HOST_USER
       recipient_list=[stud.email,]
       send_mail(subject,message,email_from,recipient_list)
@@ -76,8 +76,8 @@ def compl(request,id):
      
     
     st=Student.objects.filter().all()
-   # com=Complent.objects.filter(cmd=id)
-    return render(request,'lcomp.html',{'st':st})
+    com=Complent.objects.filter(stid=id)
+    return render(request,'lcomp.html',{'st':st,'com':com})
 def lregister(request):
     if request.method=='POST':
         form=Register(request.POST)
