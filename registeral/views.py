@@ -5,7 +5,7 @@ from main.imp import *
 from library.models import Library
 import sys
 #from . import view
-
+from .help import *
 
 def index(request):
     
@@ -18,6 +18,12 @@ def index(request):
       return render(request, 'rindex.html', {"username" : username,'image':image,'cl':cl,'typ':typ})
    else:
       return render(request, 'rlogin.html', {})
+def rmdelete(request,id):
+    us=User.objects.get(id=id)
+    us.delete()
+    return redirect('registeral:register')
+def rmupdate(request,id):
+    return render(request,"rupdete.html",{})
 def register(request):
     form=Createuser()
     if request.method=='POST':
@@ -33,7 +39,7 @@ def register(request):
               email_from = settings.EMAIL_HOST_USER
               recipient_list = [email, ]
               send_mail( subject, message, email_from, recipient_list )
-              return redirect('login')
+              return redirect('registeral:register')
     users=User.objects.filter(is_superuser=0)
     Context={
             'form':form,
@@ -106,6 +112,7 @@ def cdele(request,id):
 def student(request,id):
     
     if request.method=='POST':
+        gender='gender' in request.POST and request.POST['gender']
         fname='fname' in request.POST and request.POST['fname']
         lname='lname' in request.POST and request.POST['lname']
         sid='sid' in request.POST and request.POST['sid']
@@ -118,7 +125,7 @@ def student(request,id):
         dep=Departiment.objects.get(id=id)
         admin=request.session['username']
         user=User.objects.get(username=admin)
-        rd=Student.objects.create(fname=fname,lname=lname,sid=sid,radmin=user,email=email,password=pas,type=type,sem=sem,year=year,depa=dep)
+        rd=Student.objects.create(gender=gender,fname=fname,lname=lname,sid=sid,radmin=user,email=email,password=pas,type=type,sem=sem,year=year,depa=dep)
         rd.save()
         cour=Course.objects.filter(sem=sem,depart=dep)
         for m in cour:
@@ -130,7 +137,7 @@ def student(request,id):
             email_from = settings.EMAIL_HOST_USER
             recipient_list = [email, ]
             send_mail( subject, message, email_from, recipient_list )
-            return redirect('..')
+            return redirect('registeral:student')
     student=Student.objects.all()
     depart=Departiment.objects.all()
     
@@ -139,7 +146,7 @@ def student(request,id):
 def delete(request,id):
     member=User.objects.get(id=id)
     member.delete()
-    return HttpResponseRedirect(reverse('..'))
+    return HttpResponseRedirect(reverse('registeral:register'))
 def update(request, id):
     if request.method=='POST':
         fname=request.POST['fname']
@@ -211,17 +218,21 @@ def complent(request,id):
 def departiment(request):
     if request.method=='POST':
        name=request.POST['name']
-       colage=request.POST['colage']
+       col=request.POST['colage']
        descr=request.POST['descr']
        admin=request.session['username']
        user=User.objects.get(username=admin)
+       colage=Collage.objects.get(name=col)
        rd=Departiment.objects.create(name=name,collage=colage,descr=descr,admin=user)
        rd.save()
-       return redirect('..')
+       depart=Departiment.objects.filter().all()
+       collage=Collage.objects.filter()
+       return redirect('registeral:departiment')
        
     else:
         depart=Departiment.objects.filter().all()
-        return render(request,'rdpa.html',{'depart':depart}) 
+        collage=Collage.objects.filter()
+        return render(request,'rdpa.html',{'depart':depart,'col':collage}) 
 def rdelete(request,id):
     member=Departiment.objects.get(id=id)
     member.delete()
@@ -233,18 +244,18 @@ def lectur(request):
        password=request.POST['password']
        phone=request.POST['phone']
        exp=request.POST['exp']
-       salary=request.POST['salary']
+       #salary=request.POST['salary']
        gender=request.POST['gender']
        rol=request.POST['rol']
        age=request.POST['age']
        dep=request.POST['depa']
-       fild=request.POST['fild']
+       #fild=request.POST['fild']
        depa=Departiment.objects.get(name=dep)
        #descr=request.POST['descr']
       # admin=request.session['username']
        collage=depa.collage
       
-       lectur=Lectur(username=username,rol=rol,email=email,password=password,phone=phone,exp=exp,salary=salary,gender=gender,age=age,depa=depa,fild=fild,collage=collage)
+       lectur=Lectur(username=username,rol=rol,email=email,password=password,phone=phone,exp=exp,gender=gender,age=age,depa=depa,collage=collage)
        lectur.save()
        subject = 'your registered to jku as lecturer'
        message = f'Hi {username}, your username is{username},password {password} thank you for using.'
@@ -252,10 +263,11 @@ def lectur(request):
        recipient_list = [email, ]
        send_mail( subject, message, email_from, recipient_list )
 
-       return redirect('../')
+       return redirect('registeral:lectur')
     else:
         student=Lectur.objects.all()
-        return render(request,'lectur.html',{'student':student})
+        collage=Departiment.objects.filter()
+        return render(request,'lectur.html',{'student':student,'colage':collage})
 def course(request,id):
         if request.method=='POST':
             name=request.POST['name']
@@ -272,8 +284,44 @@ def course(request,id):
             student=Course.objects.all()
             return render(request,'course.html',{'student':student})
        
-
-
+def lecturdel(request,id):
+    lect=Lectur.objects.get(id=id)
+    lect.delete()
+    return redirect('registeral:lectur')
+def lecturupdate(request,id):
+    if request.method=="POST":
+        username=request.POST['uname']
+        email=request.POST['email']
+        password=request.POST['password']
+        phone=request.POST['phone']
+        exp=request.POST['exp']
+       
+        gender=request.POST['gender']
+        rol=request.POST['rol']
+        age=request.POST['age']
+        dep=request.POST['depa']
+       
+        depa=Departiment.objects.get(name=dep)
+       
+        collage=depa.collage
+        le=Lectur.objects.get(id=id)
+        le.username=username
+        le.email=email
+        le.password=password
+        le.phone=phone
+        le.exp=exp
+        le.gender=gender
+        le.rol=rol
+        le.age=age
+        le.collage=collage
+        le.depa=depa
+        le.save()
+        return redirect('registeral:lectur')
+        
+    student=Lectur.objects.all()
+    collage=Departiment.objects.filter()
+    lect=Lectur.objects.filter(id=id)
+    return render(request,'lecturupdate.html',{'student':student,'colage':collage,'lc':lect})
 
 
 
@@ -379,4 +427,14 @@ def klmrdelete(request,id):
     return render(request,'klm.html',{'kl':kl})
 def klmupdate(request,id):
     lb=Library.objects.get(id=id)
+def rclage(request):
+    if request.method=="POST":
+        name=request.POST['name']
+        
+        cla=Collage(name=name)
+        cla.save()
+        cl=Collage.objects.filter()
+        return redirect('registeral:rclage')
+    cl=Collage.objects.filter()
+    return render(request,"rcl.html",{'cl':cl})
             

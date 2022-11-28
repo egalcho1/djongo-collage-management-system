@@ -14,7 +14,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
 
-<main  id="main">
+<main style="margin-top: 58px;">
     <button type="button" class="btn bg-green" style="float:right ;background-color:lightgreen
     "
         data-toggle="modal" data-target="#exampleModal">
@@ -22,56 +22,36 @@
     
         <span class="bi-plus-circle" style="font-size:30px ;">new </span>
       </button>
-   <style>
-    #main{
- animation-name: animation;
- animation-duration: 1s;
- animation-iteration-count: infinite;
-    }
-    @keyframes animation{
-        0% {
-            background-image: url();
-        
-        }
-        25% {
-            background-image: url();
-        }50% {
-            background-image: url();
-        }75%{
-            background-image: url();
-        }100%{
-            background-image: url();
-        }
-    }
-   </style>
-  <center> <b class="btn btn-success">lists of librarist</b><table  class="table table-hover shadow table-responsive table-striped" style="outline:2px solid black ;width:350px">
-    <tr class="bg-info">
+    <b class="btn  btn-success">lists of collage in jku university</b>
+  <table border="1" class="table table-hover shadow">
+    <tr>
         <th>id</th>
-        <th>username</th>
-        <th>password</th>
-      
+        <th>name</th>
+        
+        
         <th>delete</th>
         <th>update</th>
         
+        
 
     </tr>
-    {% for x in lk %}
+    {% for x in cl %}
     
     <tr>
-    <td>{{ forloop.counter}}</td>
-    <td>{{ x.username }}</td>
-    <td>{{ x.password }}</td>
-   
-    <td><a href="{%url 'registeral:klmrdelete' x.id %}" class="bi-calendar-x-fill"></a></td>
-    <td><a href="{%url 'registeral:klmupdate'  x.id %}" class="bi-pencil"></a></td>
-   
+    <td>{{ x.id }}</td>
+    <td>{{ x.name }}</td>
+    
+    
+    <td><a href="rdelete/{{ x.id }}" class="bi-calendar-x-fill"></a></td>
+    <td><a href="update/{{ x.id }}" class="bi-pencil"></a></td>
+  
     
     </tr>
     {% endfor %}
     </table>
        
     </table>
-</center>
+
 </main>
 <div class="container mt-3" style="width: 700px;">
    
@@ -98,15 +78,8 @@
                             {%csrf_token%}
                             <label class="form-label">name</label>
                             <input type="text" class="form-control" name="name">
-                            <label class="form-label">password</label>
-                            <input type="text" class="form-control" name="pass1">
-                            <label class="form-label">email</label>
-                            <input type="text" class="form-control" name="email">
-                            <label class="form-label">account for</label>
-                          <select name="type" class="form-control">
-                            <option value="1">admin</option>
-                            <option value="2">user</option>
-                          </select>
+                           
+                           
                             <button type="submit" class="btn btn-success">save</button>
                         </form>
                     </a>
@@ -125,7 +98,7 @@
 
 {%endblock%}
 {%block sidebar%}
-<nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-success">
+<nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white">
     <div class="position-sticky">
       <div class="list-group list-group-flush mx-3 mt-4">
         <a
@@ -133,8 +106,8 @@
           class="list-group-item list-group-item-action py-2 ripple"
           aria-current="true"
         >
-<a href="#" class="list-group-item list-group-item-action py-2 ripple"
-><i class="fas fa-chart-line fa-fw me-3"></i><span></span></a
+<a href="course/" class="list-group-item list-group-item-action py-2 ripple"
+><i class="fas fa-chart-line fa-fw me-3"></i><span>courses</span></a
 ></a></div></div></nav>
 {%endblock%}
 

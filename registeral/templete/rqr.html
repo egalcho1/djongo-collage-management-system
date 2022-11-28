@@ -21,7 +21,8 @@
 
   
 	<body>
-    <button onclick="window.print()" class="btn btn-primary" style="float: right;">print</button>
+	<button onclick="window.print()" class="btn btn-primary" style="">for single</button>
+    <button onclick="" class="btn btn-primary" style="float: right;">print</button>
     {%for n in st%}
 		<div class="container-sm shadow" style="width: 500px;" >
 
@@ -59,7 +60,19 @@
 
 	
 
-</div><div class="col-sm-6"><img src="{{n.image.url}}" style="width: 100px;" alt="{{n.sid}}"/><br><img src="{%static 'id/'%}{{n.sid}}.png" style="width:120px;height:70px"></div></div></div><br />
+</div><div class="col-sm-6">{%if n.image%}
+	<img src="{{n.image.url}}" style="width: 100px;" alt="{{n.sid}}"/>
+	{%else%}
+	{%if n.gender == "male" %}
+	<img src="{% static '/mt.png' %}" alt=""  style="width: 100px;">
+	{%elif n.gender == "female" %}
+	<img src="{% static '/ft.png' %}" alt=""  style="width: 100px;">
+	{%else%}
+	<span>no image</span>
+	{%endif%}
+
+	{%endif%}
+	<br><img src="{%static 'id/'%}{{n.sid}}.png" style="width:120px;height:70px"></div></div></div><br />
 <div class="container-sm shadow" style="width: 500px;">
 	<div class="container-sm shadow bg-success ">
 		<b>Jinka University Registeral and Alumni Directorate </b>
@@ -89,6 +102,8 @@
 	{%endfor%}
 
  
-
+	
+	
+	
 </body>
 </html>

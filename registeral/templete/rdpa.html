@@ -22,6 +22,7 @@
     
         <span class="bi-plus-circle" style="font-size:30px ;">new </span>
       </button>
+      <center><b class="btn btn-success">lists of departiment</b></center>
     
   <table border="1" class="table table-hover shadow">
     <tr>
@@ -31,7 +32,7 @@
         <th>description</th>
         <th>delete</th>
         <th>update</th>
-        <th>add course</th>
+       
         
 
     </tr>
@@ -42,9 +43,9 @@
     <td>{{ x.name }}</td>
     <td>{{ x.colage }}</td>
     <td>{{ x.descr }}</td>
-    <td><a href="rdelete/{{ x.id }}" class="bi-calendar-x-fill"></a></td>
-    <td><a href="update/{{ x.id }}" class="bi-pencil"></a></td>
-    <td><a href="course/{{ x.id }}" class="bi-plus-circle"></a></td>
+    <td><a href="{%url 'registeral:rdelete'  x.id %}" class="bi-calendar-x-fill"></a></td>
+    <td><a href="{%url 'registeral:update' x.id %}" class="bi-pencil"></a></td>
+    
     
     </tr>
     {% endfor %}
@@ -79,7 +80,12 @@
                             <label class="form-label">name</label>
                             <input type="text" class="form-control" name="name">
                             <label class="form-label">collage</label>
-                            <input type="text" class="form-control" name="colage">
+                            <select name="colage" class="form-control">
+                            {%for n in col %}
+                             <option value="{{n.name}}">{{n.name}}</option>
+                            {%endfor%}
+                        </select>
+                           
                             <label class="form-label">discription</label>
                             <textarea class="form-control" name="descr"></textarea>
                             <button type="submit" class="btn btn-success">save</button>
@@ -100,7 +106,7 @@
 
 {%endblock%}
 {%block sidebar%}
-<nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white">
+<nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-success">
     <div class="position-sticky">
       <div class="list-group list-group-flush mx-3 mt-4">
         <a
@@ -108,8 +114,8 @@
           class="list-group-item list-group-item-action py-2 ripple"
           aria-current="true"
         >
-<a href="course/" class="list-group-item list-group-item-action py-2 ripple"
-><i class="fas fa-chart-line fa-fw me-3"></i><span>courses</span></a
+<a href="#" class="list-group-item list-group-item-action py-2 ripple"
+><i class="fas fa-chart-line fa-fw me-3"></i><span></span></a
 ></a></div></div></nav>
 {%endblock%}
 

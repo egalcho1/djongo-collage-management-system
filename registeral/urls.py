@@ -33,6 +33,11 @@ urlpatterns = [
  path('permition/',views.permition,name='permition'),
  path('klmrdelete/<int:id>/',views.klmrdelete,name='klmrdelete'),
  path('klmupdate/<int:id>/',views.klmupdate,name='klmupdate'),
+ path('rclage/',views.rclage,name="rclage"),
+ path('lecturdel/<int:id>',views.lecturdel,name="lecturdel"),
+ path('lecturupdate/<int:id>/',views.lecturupdate,name="lecturupdate"),
+ path('rmdelete/<int:id>/',views.rmdelete,name="rmdelete"),
+ path('rmupdate/<int:id>/',views.rmupdate,name="rmupdate"),
  
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

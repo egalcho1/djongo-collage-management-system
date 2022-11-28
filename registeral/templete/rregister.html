@@ -16,12 +16,12 @@
   {%block main%}
 <!--Main layout-->
 <main style="margin-top: 58px;">
-    <button type="button" class="btn bg-green" style="float:right ;background-color:lightgreen
+    <button type="button" class="btn bg-green" style="float:right ;margin-right:20px;background-color:lightgreen
     "
         data-toggle="modal" data-target="#exampleModal">
        
     
-        <span class="bi-plus" style="font-size:30px ;">registeral member</span>
+        <span class="bi-plus" style="font-size:30px ;"></span>
       </button>
     
   <table border="1" class="table table-hover shadow">
@@ -31,7 +31,6 @@
         
         <th>email</th>
         <th>delete</th>
-        <th>update</th>
         
 
     </tr>
@@ -41,9 +40,8 @@
     <td>{{ x.username }}</td>
     <td>{{ x.email }}</td>
     
-    <td><a href="delete/{{ x.id }}">delete</a></td>
-    <td><a href="update/{{ x.id }}">update</a></td>
-    <td><a href="complent/{{ x.id }}">complent</a></td>
+    <td><a href="{%url 'registeral:rmdelete' x.id %}">delete</a></td>
+   
     </tr>
     {% endfor %}
     </table>
@@ -94,6 +92,17 @@
 
 {%endblock%}
 {%block sidebar%}
+<nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-success">
+    <div class="position-sticky">
+      <div class="list-group list-group-flush mx-3 mt-4">
+        <a
+          href="#"
+          class="list-group-item list-group-item-action py-2 ripple"
+          aria-current="true"
+        >
+<a href="#" class="list-group-item list-group-item-action py-2 ripple"
+><i class="fas fa-chart-line fa-fw me-3"></i><span></span></a
+></a></div></div></nav>
 {%endblock%}
 
 

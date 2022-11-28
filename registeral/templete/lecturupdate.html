@@ -12,23 +12,22 @@
   {%block main%}
 <!--Main layout-->
 <main style="margin-top: 58px;">
-    <button type="button" class="btn bg-green" style="float:right ;background-color:lightgreen
+    <button type="button" class="btn bg-green" style="margin-right:30%;float:right ;background-color:lightgreen
     "
         data-toggle="modal" data-target="#exampleModal">
        
     
-        <span class="bi-plus" style="font-size:30px ;"></span>
+        <span class="bi-pencil" style="font-size:30px ;"></span>
       </button>
     
-  <table border="1" class="table table-hover shadow" style="margin-right: 20px;">
+ <center> <table border="1" class="table table-hover shadow table-responsive" style="margin-right: 20px;width:500px">
     <tr>
         <th>id</th>
         <th>fname</th>
         <th>email</th>
         <th>expiriance</th>
         
-        <th>delete</th>
-        <th>update</th>
+        
         
 
     </tr>
@@ -39,14 +38,12 @@
     <td>{{ x.email }}</td>
     
     <td>{{ x.exp }}</td>
-    <td><a href="{%url 'registeral:lecturdel' x.id %}">delete</a></td>
-    <td><a href="{%url 'registeral:lecturupdate' x.id %}" class="bi-pencil"></a></td>
     
     </tr>
     {% endfor %}
     </table>
        
-    </table>
+    </table></center>
 
 </main>
 <div class="container mt-3" style="width: 700px;">
@@ -72,22 +69,23 @@
                         title="" data-placement="right">
                         <form action="" method="post">
                             {%csrf_token%}
+                            {%for l in lc%}
                             <label class="form-label">username</label>
-                            <input type="text" class="form-control" name="uname">
-                            <label class="form-label">email</label>
-                            <input type="email" class="form-control" name="email">
+                            <input type="text" class="form-control" name="uname" value="{{l.username}}">
+                            <label class="form-label" >email</label>
+                            <input type="email" class="form-control" name="email" value="{{l.email}}">
                             <label class="form-label">departiment</label>
-                            <select name="depa" id="depa" class="form-control">
+                            <select name="depa" id="depa" class="form-control" >
                                 {%for n in colage%}
                                 <option value="{{n.name}}">{{n.name}}</option>
                                 {%endfor%}
                             </select>
                             
                             <label class="form-label">phone</label>
-                            <input type="tel" class="form-control" name="phone">
+                            <input type="tel" class="form-control" name="phone" value="{{l.phone}}">
                             
                             <label class="form-label">expiriance</label>
-                            <input type="exp" class="form-control" name="exp">
+                            <input type="exp" class="form-control" name="exp" value="{{l.exp}}">
                             
                             <label class="form-label">age</label>
                             <input type="date" class="form-control" name="age">
@@ -100,7 +98,7 @@
                                 <option value="costom">costom</option>
                             </select>
                             <label class="form-label">password</label>
-                            <input type="password" class="form-control" name="password">
+                            <input type="password" class="form-control" name="password" value="{{l.password}}">
                             <label class="form-label">roll</label>
                             <select class="form-control" name="rol" >
                                 <option value="male">head</option>
@@ -108,7 +106,7 @@
                                 <option value="female">lectur</option>
                                 
                             </select>
-
+{%endfor%}
                             <button type="submit" class="btn btn-success">save</button>
                         </form>
                     </a>
